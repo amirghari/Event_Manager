@@ -10,8 +10,8 @@ const MainHome = () => {
           <h1 className="home_head_title">E A R T H</h1>
           <p className="home_head_caption">ENDLESS POTENTIAL</p>
           <button className="btn btn-home">
-            <Link to={'/TaskApp'} className="link-style">
-              Get Started
+            <Link to={'/TaskApp'} className="link-style explore_btn">
+              EXPLORE
             </Link>
           </button>
         </div>
