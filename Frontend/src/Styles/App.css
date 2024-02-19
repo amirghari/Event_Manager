@@ -359,6 +359,7 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   min-width: 35rem;
   padding: 2rem 5rem;
+  margin-bottom: 1rem;
   border-radius: 1rem;
   color: var(--text-color);
 }
@@ -377,7 +378,7 @@ body {
   min-width: 35rem;
   padding: 2rem 5rem;
   border-radius: 1rem;
-  margin: 2rem 0;
+  margin-bottom: 1rem;
   color: var(--text-color);
 }
 .contact_title {
