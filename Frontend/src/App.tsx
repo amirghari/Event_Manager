@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './Styles/App.css'
-// import TaskAppDemo from './Components/TaskAppDemo.jsx'
 import Home from './Components/Home'
 import './Styles/App.css'
 import Login from './Components/Login'
