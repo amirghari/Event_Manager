@@ -5,6 +5,7 @@ import Home from './Components/Home'
 // import Login from './Components/Login.tsx'
 import './Styles/App.css'
 import EventApp from './Components/EventApp/EventApp'
+import Dashboard from './Components/EventApp/Dashboard'
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* <Route path="/Login" element={<Login />} /> */}
           <Route path="/EventApp" element={<EventApp />} />
-          {/* <Route path="/Register" element={<Register />} /> */}
+          <Route path="/EventApp/Dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
