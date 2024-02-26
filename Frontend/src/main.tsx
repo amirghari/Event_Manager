@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
-import App from './App.tsx'
-import { extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
+import App from './App' // Adjust if your App component is a TypeScript file (.tsx)
 
 const colors = {
   brand: {
@@ -13,12 +12,31 @@ const colors = {
   },
 }
 
-const theme = extendTheme({ colors })
+// Define custom breakpoints
+const breakpoints = {
+  xsm: '320px',
+  sm: '576px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+  '3xl': '1920px', // Custom breakpoint
+  '4xl': '2560px', // Custom breakpoint
+}
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const theme = extendTheme({
+  colors,
+  breakpoints,
+  config: {
+    initialColorMode: 'light',
+  },
+})
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.InitialColorMode} />
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <App />
     </ChakraProvider>
   </React.StrictMode>,

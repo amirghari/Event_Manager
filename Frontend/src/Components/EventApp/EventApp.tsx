@@ -1,6 +1,7 @@
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavApp from './NavApp'
 import AsideBar from './AsideBar'
+import DrawerMenu from './DrawerMenu'
 
 const EventApp = () => {
   return (
@@ -13,9 +14,11 @@ const EventApp = () => {
       <GridItem gridArea="nav">
         <NavApp />
       </GridItem>
-      <GridItem gridArea="aside">
-        <AsideBar />
-      </GridItem>
+      <Show above="md">
+        <GridItem gridArea="aside">
+          <AsideBar />
+        </GridItem>
+      </Show>
     </Grid>
   )
 }

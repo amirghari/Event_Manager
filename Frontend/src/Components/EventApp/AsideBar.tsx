@@ -1,4 +1,4 @@
-import { Flex, HStack, Link, List, ListItem } from '@chakra-ui/react'
+import { HStack, Link, List, ListItem } from '@chakra-ui/react'
 import {
   MdOutlineEventAvailable,
   MdOutlineSpaceDashboard,
@@ -8,54 +8,68 @@ import {
 
 const AsideBar = () => {
   return (
-    <>
-      <List
-        marginTop={'50px'}
-        padding={'50px'}
-        bgColor={'#B6CC76'}
-        width="20%"
-        height={'60vh'}
-        marginLeft="30px"
-        borderRadius="5%"
-        spacing={12}
-        display={'flex'}
-        flexDir={'column'}
-        justifyContent={'center'}
-      >
-        <ListItem>
-          <HStack>
-            <MdOutlineEventAvailable size={40} color="#74A848" />
-            <Link href="/EventApp/NewEvent" color={'white'}>
-              New Event
-            </Link>
-          </HStack>
-        </ListItem>
-        <ListItem>
-          <HStack>
-            <MdOutlineSpaceDashboard size={40} color="#74A848" />
-            <Link href="/EventApp/DashBoard" color={'white'}>
-              Dashboard
-            </Link>
-          </HStack>
-        </ListItem>
-        <ListItem>
-          <HStack>
-            <MdSearch size={40} color="#74A848" />
-            <Link href="/EventApp/EventSearch" color={'white'}>
-              Search
-            </Link>
-          </HStack>
-        </ListItem>
-        <ListItem>
-          <HStack>
-            <MdAccountCircle size={40} color="#74A848" />
-            <Link href="/EventApp/EventAccount" color={'white'}>
-              Account
-            </Link>
-          </HStack>
-        </ListItem>
-      </List>
-    </>
+    <List
+      marginTop={'50px'}
+      padding={'50px'}
+      bgColor={'#B6CC76'}
+      width={{ xsm: '40%', md: '30%', lg: '27%', xl: '20%' }}
+      height={'70vh'}
+      marginLeft="30px"
+      borderRadius="5%"
+      spacing={12}
+      display={'flex'}
+      flexDir={'column'}
+      justifyContent={'flex-start'}
+    >
+      <ListItem>
+        <HStack>
+          <MdOutlineEventAvailable size={30} color="#74A848" />
+          <Link
+            href="/EventApp/NewEvent"
+            color={'white'}
+            fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+          >
+            New Event
+          </Link>
+        </HStack>
+      </ListItem>
+      <ListItem>
+        <HStack>
+          <MdOutlineSpaceDashboard size={30} color="#74A848" />
+          <Link
+            href="/EventApp/DashBoard"
+            color={'white'}
+            fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+          >
+            Dashboard
+          </Link>
+        </HStack>
+      </ListItem>
+      <ListItem>
+        <HStack>
+          <MdSearch size={30} color="#74A848" />
+          <Link
+            href="/EventApp/EventSearch"
+            color={'white'}
+            fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+          >
+            Search
+          </Link>
+        </HStack>
+      </ListItem>
+      <ListItem>
+        <HStack>
+          <MdAccountCircle size={30} color="#74A848" />
+          <Link
+            href="/EventApp/EventAccount"
+            color={'white'}
+            fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+          >
+            Account
+          </Link>
+        </HStack>
+      </ListItem>
+    </List>
   )
 }
 
