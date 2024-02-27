@@ -8,6 +8,7 @@ import {
   Text,
   Show,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { FaEarthAmericas } from 'react-icons/fa6'
 import DrawerMenu from './DrawerMenu'
 
@@ -15,10 +16,10 @@ const NavApp = () => {
   return (
     <Flex alignItems={'center'} p={'10px'} px={'100px'}>
       <HStack spacing={4}>
-        <Show above="md">
+        <Show above="lg">
           <FaEarthAmericas className="logo-icon" size={50} />
         </Show>
-        <Show below="md">
+        <Show below="959px">
           <DrawerMenu />
         </Show>
         <Text
@@ -40,9 +41,10 @@ const NavApp = () => {
           marginTop="35px"
           bgColor={'#FF6585'}
           color={'white'}
+          borderRadius={0}
           _hover={{ bg: 'red.200' }}
         >
-          Log out
+          <Link to={'../'}>Log out</Link>
         </Button>
       </HStack>
     </Flex>

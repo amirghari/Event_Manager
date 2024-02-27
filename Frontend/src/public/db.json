@@ -1,0 +1,155 @@
+{
+    "events":[
+        {
+          "Id": 1,
+          "Title": "Sunset Picnicking at Nuuksio National Park",
+          "Description": "Experience the beauty of the Finnish sunset with our guided picnicking event in the heart of Nuuksio National Park. Enjoy local delicacies in a picturesque setting.",
+          "Organizer": "Nature Connects",
+          "Location": "Nuuksio National Park, Espoo",
+          "Date": "2024-06-15",
+          "Time": "19:00:00",
+          "Image": "./2.png"
+        },
+        {
+          "Id": 2,
+          "Title": "Midnight Sun Hiking in Lapland",
+          "Description": "Join us for a unique hiking experience under the midnight sun. This guided tour takes you through some of Lapland's most stunning landscapes during the magical nightless night.",
+          "Organizer": "Eco Adventures",
+          "Location": "Lake Inari, Lapland",
+          "Date": "2024-07-03",
+          "Time": "22:00:00",
+          "Image": "./4.png"
+        },
+        {
+          "Id": 3,
+          "Title": "Mountain Climbing Adventure at Koli",
+          "Description": "Scale the heights of Koli National Park with our expert climbing guides. This event is perfect for beginners and experienced climbers looking to enjoy breathtaking views.",
+          "Organizer": "Outdoor Bounds",
+          "Location": "Koli National Park, North Karelia",
+          "Date": "2024-08-20",
+          "Time": "08:00:00",
+          "Image": "./3.png"
+        },
+        {
+          "Id": 4,
+          "Title": "Forest Camping Weekend Getaway",
+          "Description": "Disconnect to reconnect with our weekend camping retreat in the serene Finnish forest. Activities include nature walks, mindfulness sessions, and campfire stories.",
+          "Organizer": "Green Trails",
+          "Location": "Repovesi National Park, Kouvola",
+          "Date": "2024-09-05",
+          "Time": "15:00:00",
+          "Image": "./5.png"
+        },
+        {
+          "Id": 5,
+          "Title": "Lakeside Yoga and Meditation",
+          "Description": "Find your inner peace with our lakeside yoga and meditation session. Surrounded by nature's tranquility, it's the perfect way to start your day.",
+          "Organizer": "Pathfinders",
+          "Location": "Saimaa Lake, Linnansaari National Park",
+          "Date": "2024-05-22",
+          "Time": "06:00:00",
+          "Image": "./6.png"
+        },
+        {
+            "Id": 6,
+            "Title": "Herbal Workshop in the Wild",
+            "Description": "Learn about local herbs and their uses in traditional Finnish cooking and medicine in this hands-on workshop set in the beautiful Finnish countryside.",
+            "Organizer": "Herbal Healers",
+            "Location": "Porvoo, Southern Finland",
+            "Date": "2024-06-15",
+            "Time": "10:00",
+            "Image": "./7.png"
+        },
+        {
+            "Id": 7,
+            "Title": "Ice Fishing on Lake Inari",
+            "Description": "Experience the tranquility of ice fishing on Lake Inari. Our expert guides will help you catch your dinner under the winter sky.",
+            "Organizer": "Ice Adventures",
+            "Location": "Lake Inari, Lapland",
+            "Date": "2024-01-22",
+            "Time": "08:00",
+            "Image": "./8.png"
+        },
+        {
+            "Id": 8,
+            "Title": "Wilderness Survival Skills Workshop",
+            "Description": "Equip yourself with essential survival skills with our wilderness workshop. Learn navigation, shelter building, and more in the heart of the Finnish forest.",
+            "Organizer": "Survival Specialists",
+            "Location": "Savonlinna, Eastern Finland",
+            "Date": "2024-08-05",
+            "Time": "09:00",
+            "Image": "./9.png"
+        },
+        {
+            "Id": 9,
+            "Title": "Traditional Finnish Sauna Evening",
+            "Description": "Immerse yourself in Finnish culture with an evening in a traditional lakeside sauna. Experience l\u00f6yly (steam) and a refreshing dip in the lake.",
+            "Organizer": "Cultural Connect",
+            "Location": "Tampere, Finland",
+            "Date": "2024-07-20",
+            "Time": "18:00",
+            "Image": "./10.png"
+        },
+        {
+            "Id": 10,
+            "Title": "Forest Mindfulness Retreat",
+            "Description": "Find serenity and mindfulness in the Finnish forest with guided meditations, yoga sessions, and nature walks.",
+            "Organizer": "Mindful Journeys",
+            "Location": "Turku Archipelago, Finland",
+            "Date": "2024-05-12",
+            "Time": "07:00",
+            "Image": "./11.png"
+        },
+        {
+            "Id": 11,
+            "Title": "Canoeing Adventure in the Archipelago",
+            "Description": "Paddle through the calm waters of the Finnish archipelago and explore secluded islands and local wildlife.",
+            "Organizer": "Paddle Explorers",
+            "Location": "\u00c5land Islands, Finland",
+            "Date": "2024-06-29",
+            "Time": "10:00",
+            "Image": "./12.png"
+        },
+        {
+            "Id": 12,
+            "Title": "Nordic Walking in Helsinki",
+            "Description": "Discover the green spaces of Helsinki with a guided Nordic walking tour. A great way to stay active and enjoy the outdoors.",
+            "Organizer": "Walk This Way",
+            "Location": "Helsinki, Finland",
+            "Date": "2024-04-18",
+            "Time": "15:00",
+            "Image": "./13.png"
+        },
+        {
+            "Id": 13,
+            "Title": "Sustainable Living Workshop",
+            "Description": "Learn about sustainable living practices in this workshop, including local food production, renewable energy, and eco-friendly housing.",
+            "Organizer": "EcoLife Finland",
+            "Location": "Jyvaskyla, Finland",
+            "Date": "2024-09-03",
+            "Time": "11:00",
+            "Image": "./14.png"
+        },
+        {
+            "Id": 14,
+            "Title": "Rock Climbing at Olhava",
+            "Description": "Challenge yourself with a rock climbing adventure at Olhava, Finland. Suitable for all skill levels, with stunning views of the lake.",
+            "Organizer": "Climb Finland",
+            "Location": "Repovesi National Park, Finland",
+            "Date": "2024-08-15",
+            "Time": "09:00",
+            "Image": "./15.png"
+        },
+        {
+            "Id": 15,
+            "Title": "Nature Photography Workshop",
+            "Description": "Capture the beauty of the Finnish landscape with a professional photography workshop. Learn tips and techniques for nature photography.",
+            "Organizer": "Lens and Landscapes",
+            "Location": "Lapland, Finland",
+            "Date": "2024-10-06",
+            "Time": "06:00",
+            "Image": "./16.png"
+        }
+    ] 
+      
+}

@@ -9,13 +9,12 @@ import {
 const AsideBar = () => {
   return (
     <List
-      marginTop={'50px'}
+      marginTop={'10px'}
       padding={'50px'}
       bgColor={'#B6CC76'}
-      width={{ xsm: '40%', md: '30%', lg: '27%', xl: '20%' }}
-      height={'70vh'}
+      height={'50vh'}
       marginLeft="30px"
-      borderRadius="5%"
+      borderRadius={10}
       spacing={12}
       display={'flex'}
       flexDir={'column'}

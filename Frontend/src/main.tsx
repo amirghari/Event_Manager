@@ -21,7 +21,7 @@ const breakpoints = {
   xl: '1200px',
   '2xl': '1536px',
   '3xl': '1920px', // Custom breakpoint
-  '4xl': '2560px', // Custom breakpoint
+  '4xl': '2560px',
 }
 
 const theme = extendTheme({
@@ -32,7 +32,9 @@ const theme = extendTheme({
   },
 })
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(
+  document.getElementById('root') || document.createElement('div'),
+)
 root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
