@@ -16,6 +16,7 @@ import {
   MdOutlineSpaceDashboard,
   MdSearch,
 } from 'react-icons/md'
+import { NavLink } from 'react-router-dom'
 
 function DrawerMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -40,11 +41,10 @@ function DrawerMenu() {
                 <HStack>
                   <MdOutlineEventAvailable size={30} color="#74A848" />
                   <Link
-                    href="/EventApp/NewEvent"
                     color={'#74A848'}
                     fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
                   >
-                    New Event
+                    <NavLink to="/EventApp/NewEvent">NewEvent</NavLink>
                   </Link>
                 </HStack>
               </ListItem>
@@ -52,11 +52,10 @@ function DrawerMenu() {
                 <HStack>
                   <MdOutlineSpaceDashboard size={30} color="#74A848" />
                   <Link
-                    href="/EventApp/DashBoard"
                     color={'#74A848'}
                     fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
                   >
-                    Dashboard
+                    <NavLink to="/EventApp/Dashboard">Dashboard</NavLink>
                   </Link>
                 </HStack>
               </ListItem>
@@ -64,11 +63,10 @@ function DrawerMenu() {
                 <HStack>
                   <MdSearch size={30} color="#74A848" />
                   <Link
-                    href="/EventApp/EventSearch"
                     color={'#74A848'}
                     fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
                   >
-                    Search
+                    <NavLink to="/EventApp/EventSearch">Search</NavLink>
                   </Link>
                 </HStack>
               </ListItem>
@@ -76,11 +74,10 @@ function DrawerMenu() {
                 <HStack>
                   <MdAccountCircle size={30} color="#74A848" />
                   <Link
-                    href="/EventApp/EventAccount"
                     color={'#74A848'}
                     fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
                   >
-                    Account
+                    <NavLink to="/EventApp/EventAccount">Account</NavLink>
                   </Link>
                 </HStack>
               </ListItem>

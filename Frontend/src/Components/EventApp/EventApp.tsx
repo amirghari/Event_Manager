@@ -37,7 +37,7 @@ const EventApp = () => {
               <EventCards key={event.Id} event={event} />
             ))
           ) : (
-            <li>No games available.</li>
+            <li>No events available.</li>
           )}
         </SimpleGrid>
       </GridItem>

@@ -5,6 +5,7 @@ import {
   MdSearch,
   MdAccountCircle,
 } from 'react-icons/md'
+import { NavLink } from 'react-router-dom'
 
 const AsideBar = () => {
   return (
@@ -28,7 +29,7 @@ const AsideBar = () => {
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
           >
-            New Event
+            <NavLink to="/EventApp/NewEvent">NewEvent</NavLink>
           </Link>
         </HStack>
       </ListItem>
@@ -36,11 +37,10 @@ const AsideBar = () => {
         <HStack>
           <MdOutlineSpaceDashboard size={30} color="#74A848" />
           <Link
-            href="/EventApp/DashBoard"
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
           >
-            Dashboard
+            <NavLink to="/EventApp/Dashboard">Dashboard</NavLink>
           </Link>
         </HStack>
       </ListItem>
@@ -48,11 +48,10 @@ const AsideBar = () => {
         <HStack>
           <MdSearch size={30} color="#74A848" />
           <Link
-            href="/EventApp/EventSearch"
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
           >
-            Search
+            <NavLink to="/EventApp/EventSearch">Search</NavLink>
           </Link>
         </HStack>
       </ListItem>
@@ -60,11 +59,10 @@ const AsideBar = () => {
         <HStack>
           <MdAccountCircle size={30} color="#74A848" />
           <Link
-            href="/EventApp/EventAccount"
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
           >
-            Account
+            <NavLink to="/EventApp/EventAccount">Account</NavLink>
           </Link>
         </HStack>
       </ListItem>
