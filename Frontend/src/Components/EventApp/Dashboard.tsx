@@ -1,11 +1,11 @@
 import { Grid, GridItem, Show, SimpleGrid } from '@chakra-ui/react'
 import NavApp from './NavApp'
 import AsideBar from './AsideBar'
-import EventCards from './EventCards'
+
 import useEvents from '../../Hooks/useEvents'
-import { Events } from '../../Hooks/useEvents'
+
 const Dashboard = () => {
-  const { events } = useEvents()
+  useEvents()
   return (
     <Grid
       templateAreas={{
@@ -30,15 +30,7 @@ const Dashboard = () => {
           columns={{ sm: 2, md: 2, lg: 3, xl: 4 }}
           padding={'10px'}
           spacing={3}
-        >
-          {events ? (
-            events.map((event: Events) => (
-              <EventCards key={event.Id} event={event} />
-            ))
-          ) : (
-            <li>No games available.</li>
-          )}
-        </SimpleGrid>
+        ></SimpleGrid>
       </GridItem>
     </Grid>
   )

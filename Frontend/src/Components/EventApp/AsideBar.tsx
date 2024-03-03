@@ -1,13 +1,33 @@
-import { HStack, Link, List, ListItem } from '@chakra-ui/react'
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  HStack,
+  Input,
+  Link,
+  List,
+  ListItem,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/react'
+import React from 'react'
 import {
   MdOutlineEventAvailable,
   MdOutlineSpaceDashboard,
   MdSearch,
   MdAccountCircle,
 } from 'react-icons/md'
-import { NavLink } from 'react-router-dom'
 
 const AsideBar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const initialRef = React.useRef(null)
   return (
     <List
       marginTop={'10px'}
@@ -23,13 +43,13 @@ const AsideBar = () => {
     >
       <ListItem>
         <HStack>
-          <MdOutlineEventAvailable size={30} color="#74A848" />
+          <MdSearch size={30} color="#74A848" />
           <Link
-            href="/EventApp/NewEvent"
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+            href="/EventApp"
           >
-            <NavLink to="/EventApp/NewEvent">NewEvent</NavLink>
+            Search
           </Link>
         </HStack>
       </ListItem>
@@ -39,30 +59,58 @@ const AsideBar = () => {
           <Link
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+            href="/EventApp/Dashboard"
           >
-            <NavLink to="/EventApp/Dashboard">Dashboard</NavLink>
+            Dashboard
           </Link>
         </HStack>
       </ListItem>
       <ListItem>
         <HStack>
-          <MdSearch size={30} color="#74A848" />
+          <MdOutlineEventAvailable size={30} color="#74A848" />
           <Link
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+            onClick={onOpen}
           >
-            <NavLink to="/EventApp/EventSearch">Search</NavLink>
+            New Event
           </Link>
+          <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Create your Event</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody pb={6}>
+                <FormControl>
+                  <FormLabel>Event Title</FormLabel>
+                  <Input ref={initialRef} placeholder="Event Title" />
+                </FormControl>
+
+                <FormControl mt={4}>
+                  <FormLabel>Last name</FormLabel>
+                  <Input placeholder="Last name" />
+                </FormControl>
+              </ModalBody>
+              <ModalFooter>
+                <Button colorScheme="green" mr={3}>
+                  Save
+                </Button>
+                <Button onClick={onClose}>Cancel</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </HStack>
       </ListItem>
+
       <ListItem>
         <HStack>
           <MdAccountCircle size={30} color="#74A848" />
           <Link
             color={'white'}
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
+            href="/EventApp/EventAccount"
           >
-            <NavLink to="/EventApp/EventAccount">Account</NavLink>
+            Account
           </Link>
         </HStack>
       </ListItem>
