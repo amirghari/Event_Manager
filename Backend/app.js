@@ -5,7 +5,7 @@ const cors = require('cors');
 //const swaggerUi = require('swagger-ui-express');
 //const swaggerSpec = require('./config/swaggerConfig.js');
 const userRoutes = require('./routes/userRoutes');
-//const productRoutes = require('./routes/product-router');
+const eventRoutes = require('./routes/eventRoutes');
 const customMiddleware = require('./middleware/customMiddleware');
 
 const port = process.env.PORT || 5001;
@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(customMiddleware.reqLogger);
 
-//app.use('/api', productRoutes);
+app.use('/api', eventRoutes);
 
 //app.use('/images', express.static('images'));
 
