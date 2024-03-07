@@ -20,7 +20,7 @@ const getEventId = (req) => {
 }
 
 // @desc Post a new event : @route POST /api/events : @access  Private
-const postEvent = async (req, res, next) => {
+const createEvent = async (req, res, next) => {
     console.log(req.body);
 
     const { eventName, eventType, participant, startDate, endDate, location } = req.body;
@@ -68,7 +68,7 @@ const getEvents = async (req, res, next) => {
 }
 
 // @desc Get a single event : @route GET /api/events/:id : @access  Private
-const getEvent = async (req, res, next) => {
+const getEventById = async (req, res, next) => {
     try {
         const event = await Event.findById(req.params.id);
         if (!event) {
@@ -114,9 +114,9 @@ const deleteEvent = async (req, res, next) => {
 }
 
 module.exports = {
-    postEvent,
+    createEvent,
     getEvents,
-    getEvent,
+    getEventById,
     updateEvent,
     deleteEvent,
 };
