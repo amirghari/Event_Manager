@@ -1,0 +1,82 @@
+.register-svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+
+.register-svg div {
+  width: 1250px;
+  height: auto;
+}
+
+.register-svg div svg {
+  width: 100%;
+  height: 100%;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.register-form {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-form h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-form input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4rem;
+  font-size: 16px;
+  text-align: center;
+}
+
+.register-form input::placeholder {
+  text-align: center;
+}
+
+.register-form input:focus::placeholder {
+  color: transparent;
+}
+
+.register-form button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 10px;
+  background-color: #74a848;
+  color: #fff;
+  border: none;
+  border-radius: 4rem;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-form button:hover {
+  background-color: #b6cc76;
+}

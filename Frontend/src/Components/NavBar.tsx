@@ -69,7 +69,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-menu-items">
-                <Link to="/TaskApp" className="menu-link link-style link">
+                <Link to="/Login" className="menu-link link-style link">
                   Log in
                 </Link>
               </li>
@@ -83,13 +83,18 @@ const Navbar = () => {
         </div>
         <div className="btn-nav">
           <button className="btn btn-sign-in">
-            <Link to="/EventApp" className="link-style">
+            <Link to="/Login" className="link-style">
               Log in
             </Link>
           </button>
           <button className="btn reg_btn">
             <Link to="/Register" className="link-style">
               Register
+            </Link>
+          </button>
+          <button className="btn btn-sign-in">
+            <Link to="/EventApp" className="link-style">
+              App
             </Link>
           </button>
         </div>

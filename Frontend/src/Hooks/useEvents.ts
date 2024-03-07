@@ -16,6 +16,7 @@ const useEvents = () => {
     const [events, setEvents] = useState([])
     const [error, setError] = useState()
     const[isLoading, setLoading] = useState(false)
+    const [joinedEvents, setJoinedEvents] = useState([])
   
   useEffect(() => {
     setLoading(true)
@@ -34,7 +35,7 @@ const useEvents = () => {
   
       return () => controller.abort();
     }, [])
-      return { events, error, isLoading }
+      return { events, error, isLoading, joinedEvents, setJoinedEvents}
   }
   
   export default useEvents

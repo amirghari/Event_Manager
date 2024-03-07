@@ -1,0 +1,113 @@
+.login-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  height: 50%;
+  padding: 20px;
+  margin: 0 5% 0 5%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-form input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4rem;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-form input::placeholder {
+  text-align: center;
+}
+
+.login-form input:focus::placeholder {
+  color: transparent;
+}
+
+.login-form button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 10px;
+  background-color: #74a848;
+  color: #fff;
+  border: none;
+  border-radius: 4rem;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #b6cc76;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  cursor: default;
+  font-size: 20px;
+}
+
+.register-link p {
+  margin-left: 5px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #74a848;
+  cursor: pointer;
+}
+
+.register-link p:hover {
+  text-decoration: underline;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 4px;
+  cursor: default;
+  font-size: 20px;
+}
+
+.forgot-password p {
+  margin-left: 5px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #74a848;
+  cursor: pointer;
+}
+
+.forgot-password p:hover {
+  text-decoration: underline;
+}
+
+.login-svg svg {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}

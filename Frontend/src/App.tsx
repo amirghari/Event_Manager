@@ -7,6 +7,8 @@ import './Styles/App.css'
 import EventApp from './Components/EventApp/EventApp'
 import Dashboard from './Components/EventApp/Dashboard'
 import EventAccount from './Components/EventApp/EventAccount'
+import Login from './Components/Login'
+import Register from './Components/Register'
 
 function App() {
   return (
@@ -14,7 +16,8 @@ function App() {
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/Login" element={<Login />} /> */}
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/EventApp" element={<EventApp />} />
           <Route path="/EventApp/Dashboard" element={<Dashboard />} />
           <Route path="/EventApp/EventAccount" element={<EventAccount />} />

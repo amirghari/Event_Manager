@@ -83,17 +83,41 @@ const AsideBar = () => {
               <ModalBody pb={6}>
                 <FormControl>
                   <FormLabel>Event Title</FormLabel>
-                  <Input ref={initialRef} placeholder="Event Title" />
+                  <Input
+                    ref={initialRef}
+                    focusBorderColor="green.500"
+                    placeholder="Event Title"
+                  />
                 </FormControl>
 
                 <FormControl mt={4}>
-                  <FormLabel>Last name</FormLabel>
-                  <Input placeholder="Last name" />
+                  <FormLabel>Description</FormLabel>
+                  <Input
+                    focusBorderColor="green.500"
+                    placeholder="Description"
+                  />
+                </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Organizer</FormLabel>
+                  <Input focusBorderColor="green.500" placeholder="Organizer" />
+                </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Location</FormLabel>
+                  <Input focusBorderColor="green.500" placeholder="Location" />
+                </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Date & Time</FormLabel>
+                  <Input
+                    placeholder="Select Date and Time"
+                    size="md"
+                    type="datetime-local"
+                    focusBorderColor="green.500"
+                  />
                 </FormControl>
               </ModalBody>
               <ModalFooter>
                 <Button colorScheme="green" mr={3}>
-                  Save
+                  Submit
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>

@@ -9,7 +9,6 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {/* <TaskDisplay /> */}
       <MainHome />
       <AboutUs />
       <ContactUs />
