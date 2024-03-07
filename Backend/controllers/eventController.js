@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const User = require('../models/userModel');
+const Event = require('../models/eventModel');
 const { ConnectionStates } = require('mongoose');
 
 const createToken = (id, res) => {
