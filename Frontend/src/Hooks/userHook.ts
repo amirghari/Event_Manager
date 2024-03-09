@@ -1,25 +1,36 @@
 // const API="https://taskmanager-server-hj26.onrender.com";
 
-export const createUser = async (user) => {
-    const response = await fetch(`${API}/api/createUser`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-    });
+// Assuming API is defined
+const API: string = "http://localhost:3000"; // Example base URL, adjust as needed
 
-    return response;
+interface User {
+  username: string;
+  email: string;
+  password: string;
+  firstname: string;
+  lastname: string;
 }
 
-export const loginUser = async (user) => {
-    const response = await fetch(`${API}/api/loginUser`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-    });
+export const createUser = async (user: User): Promise<Response> => {
+  const response = await fetch(`${API}/api/createUser`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
 
-    return response;
-}
+  return response;
+};
+
+export const loginUser = async (user: Pick<User, 'username' | 'password'>): Promise<Response> => {
+  const response = await fetch(`${API}/api/loginUser`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+
+  return response;
+};

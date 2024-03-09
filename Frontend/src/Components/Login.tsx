@@ -1,16 +1,25 @@
-import { useState } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Login.css'
-import { ReactSVG } from 'react-svg'
+// Ensure you have a loginUser function defined in your hooks that returns a Promise
 import { loginUser } from '../Hooks/userHook'
+import { ReactSVG } from 'react-svg'
 
-const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+interface LoginCriteria {
+  id: number
+  type: string
+  value: string
+  placeholder: string
+  func: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const navigate = useNavigate()
 
-  const loginCriteria = [
+  const loginCriteria: LoginCriteria[] = [
     {
       id: 0,
       type: 'text',
@@ -27,7 +36,7 @@ const Login = () => {
     },
   ]
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (username === '' || password === '') {
@@ -35,28 +44,26 @@ const Login = () => {
       return
     }
 
-    const loginData = {
-      username,
-      password,
-    }
+    try {
+      const loginData = { username, password }
+      const response = await loginUser(loginData) // loginUser should handle the POST request
 
-    const response = await loginUser(loginData)
-    const json = await response.json()
+      if (!response.ok) {
+        alert('Incorrect username or password')
+        return
+      }
 
-    localStorage.setItem('isUserLoggedIn', true)
-    localStorage.setItem('user', json.username)
-    localStorage.setItem('token', json.token)
+      const json = await response.json()
+      localStorage.setItem('isUserLoggedIn', 'true')
+      localStorage.setItem('user', json.username)
+      localStorage.setItem('token', json.token)
 
-    if (!response.ok) {
-      // console.log("Error in logging in");
-      // console.log(response);
-      alert('Incorrect username or password')
-    }
-    if (response.ok) {
       setUsername('')
       setPassword('')
-      // console.log("Logged in");
       navigate('/')
+    } catch (error) {
+      console.error('Error during login', error)
+      alert('Login failed, please try again later.')
     }
   }
 
@@ -88,7 +95,7 @@ const Login = () => {
             {/* <p className="redirect-link" onClick={() => navigate("/ForgotPassword")}>Forgot Password?</p> */}
             <p
               onClick={() => {
-                alert('Then try to remeber it')
+                alert('Then try to remember it')
               }}
             >
               Forgot your password?

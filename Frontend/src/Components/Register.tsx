@@ -1,64 +1,74 @@
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReactSVG } from 'react-svg'
 import '../Styles/Register.css'
 import { createUser } from '../Hooks/userHook'
 
-const Register = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
+interface SignupField {
+  id: number
+  type: string
+  value: string
+  placeholder: string
+  func: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const Register: React.FC = () => {
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
+  const [firstname, setFirstname] = useState<string>('')
+  const [lastname, setLastname] = useState<string>('')
+
   const navigate = useNavigate()
 
-  const signupCriteria = [
+  const signupCriteria: SignupField[] = [
     {
       id: 0,
       type: 'text',
       value: username,
       placeholder: 'Username',
-      func: (e) => setUsername(e.target.value),
+      func: (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value),
     },
     {
       id: 1,
-      type: 'password',
-      value: password,
-      placeholder: 'Password',
-      func: (e) => setPassword(e.target.value),
+      type: 'email',
+      value: email,
+      placeholder: 'Email',
+      func: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
     },
     {
       id: 2,
       type: 'password',
-      value: confirmPassword,
-      placeholder: 'Confirm Password',
-      func: (e) => setConfirmPassword(e.target.value),
+      value: password,
+      placeholder: 'Password',
+      func: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
     },
     {
       id: 3,
-      type: 'email',
-      value: email,
-      placeholder: 'Email',
-      func: (e) => setEmail(e.target.value),
+      type: 'password',
+      value: confirmPassword,
+      placeholder: 'Confirm Password',
+      func: (e: ChangeEvent<HTMLInputElement>) =>
+        setConfirmPassword(e.target.value),
     },
     {
       id: 4,
       type: 'text',
       value: firstname,
       placeholder: 'First Name',
-      func: (e) => setFirstname(e.target.value),
+      func: (e: ChangeEvent<HTMLInputElement>) => setFirstname(e.target.value),
     },
     {
       id: 5,
       type: 'text',
       value: lastname,
       placeholder: 'Last Name',
-      func: (e) => setLastname(e.target.value),
+      func: (e: ChangeEvent<HTMLInputElement>) => setLastname(e.target.value),
     },
   ]
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
@@ -66,35 +76,27 @@ const Register = () => {
       return
     }
 
-    const user = {
-      username: username,
-      password: password,
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-    }
-
-    const response = await createUser(user)
-    const json = await response.json()
-
-    localStorage.setItem('isUserLoggedIn', true)
-    localStorage.setItem('user', json.username)
-    localStorage.setItem('token', json.token)
-
-    if (!response.ok) {
-      console.log('Error in adding user')
-      console.log(response)
-    }
-    if (response.ok) {
-      setUsername('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
-      setFirstname('')
-      setLastname('')
-      // console.log("New user added:", json);
-      alert('User Added Successfully')
-      navigate('/TaskApp')
+    try {
+      const response = await createUser({
+        username,
+        email,
+        password,
+        firstname,
+        lastname,
+      })
+      if (response.ok) {
+        const data = await response.json()
+        localStorage.setItem('isUserLoggedIn', 'true')
+        localStorage.setItem('user', JSON.stringify(data.user))
+        // localStorage.setItem('token', data.token)
+        alert('User Added Successfully')
+        navigate('/') // Adjust according to your app's routes
+      } else {
+        alert('Failed to register user')
+      }
+    } catch (error) {
+      alert('An error occurred. Please try again.')
+      console.error('Registration error:', error)
     }
   }
 
