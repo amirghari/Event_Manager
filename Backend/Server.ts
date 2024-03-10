@@ -28,5 +28,5 @@ app.listen(PORT, (): void => {
 // Use the routes
 // Note: Make sure your userRoute and eventRoute are properly exported and imported.
 // TypeScript might require you to adjust how you're exporting and importing these routes.
-app.use('/api/events', eventRoute);
-app.use('/api/users', userRoute);
+app.use('/', eventRoute);
+app.use('/', userRoute);

@@ -1,4 +1,5 @@
-import useEvents, { Events } from '../../Hooks/useEvents'
+import { Events } from '../../Hooks/useEvents'
+import { useEvents } from '../../Hooks/useEvents'
 import {
   Button,
   Card,
@@ -17,7 +18,9 @@ const EventCard = ({ event }: { event: Events }) => {
 
   const eventHandler = (clickedEvent: Events) => {
     console.log('Clicked Event:', clickedEvent)
-    const isEventJoined = joinedEvents.some((e) => e.Id === clickedEvent.Id)
+    const isEventJoined = joinedEvents.some(
+      (e: Events) => e.Id === clickedEvent.Id,
+    )
     console.log('Is Event Joined:', isEventJoined)
     if (!isEventJoined) {
       setJoinButton(true)
