@@ -30,10 +30,6 @@ const createUser = async (req: Request, res: Response) => {
       email,
     });
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET || "defaultSecret", {
-      expiresIn: "1d",
-    });
-
     res.status(201).json({
       _id: newUser._id,
       username: newUser.username,
