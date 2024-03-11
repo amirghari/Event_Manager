@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { User } from "../Models/userModel";
-
+import { Event } from "../Models/eventModel";
 // Assuming your User model correctly reflects your database schema
 // and you have installed the necessary types for Express and Mongoose.
 
@@ -28,6 +28,7 @@ const createUser = async (req: Request, res: Response) => {
       firstname,
       lastname,
       email,
+      Event
     });
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET || "defaultSecret", {
@@ -45,6 +46,31 @@ const createUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error occurred in adding user data" });
   }
 };
+
+// The actual implementation of addEventToUser in your userController
+const addEventToUser = async (req: Request, res: Response): Promise<void> => {
+  const { userName } = req.params;
+  const event: Event = req.body; // Assuming Event matches the interface
+
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { username: userName },
+      { $push: { events: event } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedUser) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    res.status(200).json({ message: 'Event added to user', user: updatedUser });
+  } catch (error) {
+    console.error('Error occurred in addEventToUser:', error);
+    res.status(500).json({ message: 'Error updating user with event'});
+  }
+};
+
 
 const loginUser = async (req: Request, res: Response) => {
   try {
@@ -168,6 +194,7 @@ export default {
   loginUser,
   getAllUsers,
   getUserById,
-    updateUserById,
+  updateUserById,
   deleteUserById,
+  addEventToUser
 };

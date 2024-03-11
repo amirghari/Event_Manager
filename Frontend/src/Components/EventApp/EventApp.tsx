@@ -3,8 +3,10 @@ import NavApp from './NavApp'
 import AsideBar from './AsideBar'
 import { useEvents } from '../../Hooks/useEvents'
 import EventCard from './EventCards'
+import { useUser } from '../../Services/UserContext'
 
 const EventApp = () => {
+  const { userId } = useUser()
   const { events } = useEvents()
   return (
     <Grid
@@ -32,7 +34,9 @@ const EventApp = () => {
           spacing={3}
         >
           {events ? (
-            events.map((event) => <EventCard key={event.Id} event={event} />)
+            events.map((event) => (
+              <EventCard key={event.Id} event={event} userId={userId} />
+            ))
           ) : (
             <li>No games available.</li>
           )}
