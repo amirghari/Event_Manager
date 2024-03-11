@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(customMiddleware.reqLogger);
 
-app.use('/api', eventRoutes);
+app.use('/api/events', eventRoutes);
 
 //app.use('/images', express.static('images'));
 

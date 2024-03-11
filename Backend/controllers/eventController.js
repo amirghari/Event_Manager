@@ -15,11 +15,30 @@ const createToken = (id, res) => {
 }
 
 const getEventId = (req) => {
-    const event = jwt.decode(req.cookies.Authorization, process.env.SECRETKEY);
-    return event.eventId;
-}
+    return new Promise((resolve, reject) => {
+        try {
+            // Check if the 'Authorization' header is present in the request
+            if (!req.headers || !req.headers.authorization) {
+                throw new Error('Authorization header is missing');
+            }
+            // Decode the JWT token from the 'Authorization' header
+            const event = jwt.decode(req.headers.authorization, process.env.SECRETKEY);
+            // Check if the decoded token contains the event ID
+            if (!event || !event.eventId) {
+                throw new Error('Event ID not found in token');
+            }
+            // Resolve with the event ID
+            resolve(event.eventId);
+        } catch (error) {
+            // Reject with the error
+            reject(error);
+        }
+    });
+};
 
-// @desc Post a new event : @route POST /api/events : @access  Private
+
+
+// @desc Post a new event : @route POST /api/events/create : @access  Private
 const createEvent = async (req, res, next) => {
     console.log(req.body);
 
@@ -53,6 +72,7 @@ const createEvent = async (req, res, next) => {
             },
         });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Server error' });
     }
 }
@@ -80,10 +100,13 @@ const getEventById = async (req, res, next) => {
     }
 }
 
-// @desc Update an event : @route PUT /api/events/:id : @access  Private
+// @desc Update an event : @route PUT /api/events/update/:id : @access  Private
 const updateEvent = async (req, res, next) => {
     try {
         const eventid = getEventId(req);
+        if (!eventid) {
+            return res.status(401).json({ message: 'Authentication required. Missing token.' });
+        }
         const event = await Event.findByIdAndUpdate
             (eventid, req.body, {
                 new: true,
@@ -95,11 +118,12 @@ const updateEvent = async (req, res, next) => {
         res.status(200).json(event);
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Server error' });
     }
 }
 
-// @desc Delete an event : @route DELETE /api/events/:id : @access  Private
+// @desc Delete an event : @route DELETE /api/events/delete/:id : @access  Private
 const deleteEvent = async (req, res, next) => {
     try {
         const eventid = getEventId(req);
@@ -109,6 +133,7 @@ const deleteEvent = async (req, res, next) => {
         }
         res.status(200).json({ message: 'Event deleted succesfully' });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Server error' });
     }
 }

@@ -18,10 +18,10 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);
 
-router.get('/getMe', protect, getMe);
+router.get('/getMe:id', protect, getMe);
 
-router.put('/updateUser', protect, updateUser);
+router.put('/updateUser/:id', protect, updateUser);
 
-router.delete('/delete', protect, deleteUser);
+router.delete('/deleteUser/:id', protect, deleteUser);
 
 module.exports = router;

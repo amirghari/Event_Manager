@@ -93,7 +93,7 @@ const loginUser = async (req, res, next) => {
     }
 };
 
-// @desc Get user data : @route GET /api/users/getMe : @access  Private
+// @desc Get user data : @route GET /api/users/getMe:id : @access  Private
 const getMe = async (req, res, next) => {
     try {
         const userId = getUserId(req);
@@ -104,7 +104,7 @@ const getMe = async (req, res, next) => {
     }
 };
 
-// @desc Update user data : @route PUT /api/users/updateUser : @access  Private
+// @desc Update user data : @route PUT /api/users/updateUser/:id : @access  Private
 const updateUser = async (req, res, next) => {
     const { name, email, password } = req.body;
     try {
@@ -120,7 +120,7 @@ const updateUser = async (req, res, next) => {
     }
 };
 
-// @desc Delete user data : @route DELETE /api/users/delete : @access  Private
+// @desc Delete user data : @route DELETE /api/users/deleteUser:id : @access  Private
 const deleteUser = async (req, res) => {
     try {
         const userId = getUserId(req);
