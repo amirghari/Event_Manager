@@ -92,5 +92,3 @@ export const useUserEvents = (userName: string) => {
   return { joinedEvents, isLoading, error };
 };
 
-
-  
