@@ -185,9 +185,56 @@ const deleteUserById = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "Error occurred in deleting user" });
   }
 };
+export const getUsersEventsByName = async (req: Request, res: Response): Promise<Response> => {
+  try {
+    // Get the username from the request parameters
+    const { userName } = req.params;
+
+    // Find the user by username
+    const user = await User.findOne({ username: userName });
+
+    // If the user does not exist, return a 404
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Return the events of the found user
+    return res.status(200).json(user.events);
+  } catch (error) {
+    console.error('Error fetching user events:', error);
+    return res.status(500).json({ message: 'Error fetching user events', error });
+  }
+};
+
+export const isEventJoined = async (req: Request, res: Response): Promise<void> => {
+  const { userName, eventId } = req.params;
+
+  try {
+    const parsedEventId = parseInt(eventId);
+    if (isNaN(parsedEventId)) {
+      res.status(400).json({ message: 'Invalid event ID' });
+      return;
+    }
+
+    const user = await User.findOne({ username: userName }).exec();
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    const eventJoined = user.events.some(event => event.Id === parsedEventId);
+    res.status(200).json(eventJoined);
+
+  } catch (error) {
+    console.error('Error in isEventJoined:', error);
+    res.status(500).json({ message: 'Error checking event joined status' });
+  }
+};
 
 
-// Adjust other functions (updateUserById, deleteUserById) similarly based on the pattern above
+
+
 
 export default {
   createUser,
@@ -196,5 +243,7 @@ export default {
   getUserById,
   updateUserById,
   deleteUserById,
-  addEventToUser
+  addEventToUser,
+  getUsersEventsByName,
+  isEventJoined
 };

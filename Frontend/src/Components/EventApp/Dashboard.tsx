@@ -13,7 +13,7 @@ const Dashboard = () => {
     const storedUserName = localStorage.getItem('user')
     setUserName(storedUserName)
   }, [])
-  const { joinedEvents } = useUserEvents(userName)
+  const { joinedEvents } = useUserEvents(userName || '') // Provide a default value of an empty string for userName
   return (
     <Grid
       templateAreas={{
@@ -41,7 +41,7 @@ const Dashboard = () => {
         >
           {joinedEvents ? (
             joinedEvents.map((event) => (
-              <EventCard key={event.Id} event={event} userId={userId} />
+              <EventCard key={event.Id} event={event} />
             ))
           ) : (
             <li>No games available.</li>
