@@ -91,4 +91,32 @@ export const useUserEvents = (userName: string) => {
 
   return { joinedEvents, isLoading, error };
 };
+// In your userHook file
+export const checkEventJoined = async (userName: string | null, eventId: number): Promise<boolean> => {
+  if (!userName) {
+    // User is not logged in or userName is not retrieved yet
+    return false;
+  }
+
+  try {
+    // Replace with your actual API endpoint
+    const response = await fetch(`${API}/api/${userName}/isEventJoined/${eventId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const isJoined = await response.json(); // Expecting a boolean value from the server
+    return isJoined;
+  } catch (error) {
+    console.error('Error checking if event is joined:', error);
+    return false;
+  }
+};
+
 

@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { MdLocationOn, MdDateRange } from 'react-icons/md'
-import { joinEvent } from '../../Hooks/userHook'
+import { joinEvent, checkEventJoined } from '../../Hooks/userHook'
 interface EventCardProps {
   event: Events
   userId: string // Make sure to pass this prop from the parent component
@@ -23,6 +23,13 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     // Example: Fetch the user ID from local storage or authentication token
     const storedUserName = localStorage.getItem('user')
     setUserName(storedUserName)
+
+    const fetchJoinedStatus = async () => {
+      const joined = await checkEventJoined(storedUserName, event.Id)
+      setJoinButton(joined)
+    }
+
+    fetchJoinedStatus()
   }, [])
   const [joinButton, setJoinButton] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
