@@ -71,7 +71,7 @@ const AsideBar = () => {
       marginTop={'10px'}
       padding={'50px'}
       bgColor={'#B6CC76'}
-      height={'50vh'}
+      height={'43vh'}
       marginLeft="30px"
       borderRadius={10}
       spacing={12}
