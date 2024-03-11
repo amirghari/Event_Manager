@@ -23,4 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-*.env
+# Dependency directories
+node_modules/
+
+# Environment configuration
+.env
