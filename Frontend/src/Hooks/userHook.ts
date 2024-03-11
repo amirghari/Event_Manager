@@ -34,3 +34,4 @@ export const loginUser = async (user: Pick<User, 'username' | 'password'>): Prom
 
   return response;
 };
+

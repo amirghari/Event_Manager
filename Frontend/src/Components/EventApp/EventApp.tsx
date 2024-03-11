@@ -1,7 +1,7 @@
 import { Grid, GridItem, Show, SimpleGrid } from '@chakra-ui/react'
 import NavApp from './NavApp'
 import AsideBar from './AsideBar'
-import useEvents from '../../Hooks/useEvents'
+import { useEvents } from '../../Hooks/useEvents'
 import EventCard from './EventCards'
 
 const EventApp = () => {
