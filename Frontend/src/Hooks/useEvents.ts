@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import mongoose from 'mongoose';
 
 export interface Events {
+    _id: mongoose.Types.ObjectId;
     Id: number;
     Title: string;
     Description: string;

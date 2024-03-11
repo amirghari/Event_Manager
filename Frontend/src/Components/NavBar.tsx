@@ -92,11 +92,6 @@ const Navbar = () => {
               Register
             </Link>
           </button>
-          <button className="btn btn-sign-in">
-            <Link to="/EventApp" className="link-style">
-              App
-            </Link>
-          </button>
         </div>
       </div>
       {menuOpen && <div className="cover cover-active"></div>}

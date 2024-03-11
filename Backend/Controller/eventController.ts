@@ -6,23 +6,23 @@ import { User } from "../Models/userModel";
 
 const createEvent = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { title, description, organizer, location, date, time, userId, image } = req.body;
+    const { Id, Title, Description, Organizer, Location, Date, Time, Image } = req.body;
 
-    if (!title || !description || !organizer || !location || !date || !time || !userId) {
+    if (!Id || !Title || !Description || !Organizer || !Location || !Date || !Time) {
       res.status(400).json({ message: "Please fill in all required fields" });
       return;
     }
 
     // Assuming `Id` is handled automatically or not necessary due to MongoDB's `_id`
     const event = await Event.create({
-      title,
-      description,
-      organizer,
-      location,
-      date,
-      time,
-      image, // Included if provided
-      user_id: userId, // Matching the schema
+      Id,
+      Title,
+      Description,
+      Organizer,
+      Location,
+      Date,
+      Time,
+      Image, 
     });
 
     console.log("Event data added");

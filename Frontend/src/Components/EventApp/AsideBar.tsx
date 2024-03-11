@@ -16,16 +16,54 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { useEventApi } from '../../Hooks/createEvent'
 import {
   MdOutlineEventAvailable,
   MdOutlineSpaceDashboard,
   MdSearch,
   MdAccountCircle,
 } from 'react-icons/md'
+export interface EventParams {
+  Id: number
+  Title: string
+  Description: string
+  Organizer: string
+  Location: string
+  Date: string
+  Time: string
+  Image: string
+}
 
 const AsideBar = () => {
+  let id = 20
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [eventParams, setEventParams] = useState<EventParams>({
+    Id: id++,
+    Title: '',
+    Description: '',
+    Organizer: '',
+    Location: '',
+    Date: '',
+    Time: '',
+    Image: '',
+  })
+
+  const { createEvent } = useEventApi()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEventParams({ ...eventParams, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async () => {
+    try {
+      await createEvent(eventParams)
+      console.log('Event created successfully')
+      onClose()
+    } catch (error) {
+      console.error('Failed to create event:', error)
+    }
+  }
 
   const initialRef = React.useRef(null)
   return (
@@ -84,39 +122,70 @@ const AsideBar = () => {
                 <FormControl>
                   <FormLabel>Event Title</FormLabel>
                   <Input
-                    ref={initialRef}
-                    focusBorderColor="green.500"
+                    name="Title"
                     placeholder="Event Title"
+                    onChange={handleChange}
                   />
                 </FormControl>
 
                 <FormControl mt={4}>
                   <FormLabel>Description</FormLabel>
                   <Input
-                    focusBorderColor="green.500"
+                    name="Description"
                     placeholder="Description"
+                    onChange={handleChange}
                   />
                 </FormControl>
+
                 <FormControl mt={4}>
                   <FormLabel>Organizer</FormLabel>
-                  <Input focusBorderColor="green.500" placeholder="Organizer" />
+                  <Input
+                    name="Organizer"
+                    placeholder="Organizer"
+                    onChange={handleChange}
+                  />
                 </FormControl>
+
                 <FormControl mt={4}>
                   <FormLabel>Location</FormLabel>
-                  <Input focusBorderColor="green.500" placeholder="Location" />
-                </FormControl>
-                <FormControl mt={4}>
-                  <FormLabel>Date & Time</FormLabel>
                   <Input
-                    placeholder="Select Date and Time"
-                    size="md"
-                    type="datetime-local"
-                    focusBorderColor="green.500"
+                    name="Location"
+                    placeholder="Location"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <FormControl mt={4}>
+                  <FormLabel>Date</FormLabel>
+                  <Input
+                    name="Date"
+                    type="date"
+                    placeholder="Select the Date"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <FormControl mt={4}>
+                  <FormLabel>Time</FormLabel>
+                  <Input
+                    name="Time"
+                    type="time"
+                    placeholder="Select the Time"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <FormControl mt={4}>
+                  <FormLabel>Image Url</FormLabel>
+                  <Input
+                    name="Image"
+                    placeholder="Image Url"
+                    onChange={handleChange}
                   />
                 </FormControl>
               </ModalBody>
               <ModalFooter>
-                <Button colorScheme="green" mr={3}>
+                <Button colorScheme="green" mr={3} onClick={handleSubmit}>
                   Submit
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>

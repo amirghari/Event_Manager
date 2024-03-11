@@ -9,7 +9,6 @@ const eventSchema = new Schema({
     Date: { type: String, required: true },
     Time: { type: String, required: true },
     Image: { type: String, required: false },
-    user_id: { type: Schema.Types.ObjectId, required: true}
 }, {
     collection: "events"
 });
