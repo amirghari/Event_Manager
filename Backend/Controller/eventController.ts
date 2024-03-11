@@ -1,37 +1,56 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { Event } from "../Models/eventModel";
 import { User } from "../Models/userModel";
 
 // Assuming Event and User models are properly typed according to your MongoDB schema
 
-const createEvent = async (req: Request, res: Response): Promise<void> => {
+const createEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  console.log(req.body);
+
+  const { Id, Title, Description, Organizer, Location, Date, Time, UserId } = req.body;
+
+  if (!Id || !Title || !Description || !Organizer || !Location || !Date || !Time || !UserId) {
+    res.status(400).json({ message: "Please fill in all required fields" });
+  }
+
   try {
-    const { title, description, organizer, location, date, time, userId, image } = req.body;
-
-    if (!title || !description || !organizer || !location || !date || !time || !userId) {
-      res.status(400).json({ message: "Please fill in all required fields" });
-      return;
-    }
-
-    // Assuming `Id` is handled automatically or not necessary due to MongoDB's `_id`
     const event = await Event.create({
-      title,
-      description,
-      organizer,
-      location,
-      date,
-      time,
-      image, // Included if provided
-      user_id: userId, // Matching the schema
+      Id,
+      Title,
+      Description,
+      Organizer,
+      Location,
+      Date,
+      Time,
+      User_id: UserId, // Match the case with your schema
     });
 
-    console.log("Event data added");
-    res.status(201).json(event);
-  } catch (error) {
+    console.log("Event created", event);
+
+    res.status(201).json({
+      message: "Event created successfully",
+      event: {
+        id: event.Id, // Match the case with your schema
+        title: event.Title,
+        description: event.Description,
+        organizer: event.Organizer,
+        location: event.Location,
+        date: event.Date,
+        time: event.Time,
+        user_id: event.User_id, // Match the case with your schema
+      }
+    });
+  } catch (error: any) {
     console.error("Error occurred in adding event data", error);
+
+    // Log validation errors
+    if (error.name === "ValidationError") {
+      console.error("Validation errors:", error.errors);
+    }
     res.status(500).json({ message: "Error occurred in adding event data" });
   }
 };
+
 
 
 const getAllEvents = async (_req: Request, res: Response): Promise<void> => {
