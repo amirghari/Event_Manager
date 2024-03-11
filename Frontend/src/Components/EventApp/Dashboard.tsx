@@ -1,12 +1,19 @@
 import { Grid, GridItem, Show, SimpleGrid } from '@chakra-ui/react'
 import NavApp from './NavApp'
 import AsideBar from './AsideBar'
-import { Events } from '../../Hooks/useEvents'
-import { useEvents } from '../../Hooks/useEvents'
-import EventCards from './EventCards'
+import { useUserEvents } from '../../Hooks/userHook'
+import { useEffect, useState } from 'react'
+import EventCard from './EventCards'
 
 const Dashboard = () => {
-  const { joinedEvents } = useEvents()
+  const [userName, setUserName] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Example: Fetch the user ID from local storage or authentication token
+    const storedUserName = localStorage.getItem('user')
+    setUserName(storedUserName)
+  }, [])
+  const { joinedEvents } = useUserEvents(userName)
   return (
     <Grid
       templateAreas={{
@@ -33,8 +40,8 @@ const Dashboard = () => {
           spacing={3}
         >
           {joinedEvents ? (
-            joinedEvents.map((event: Events) => (
-              <EventCards key={event.Id} event={event} />
+            joinedEvents.map((event) => (
+              <EventCard key={event.Id} event={event} userId={userId} />
             ))
           ) : (
             <li>No games available.</li>

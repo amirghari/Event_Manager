@@ -6,6 +6,7 @@ const userRouter = express.Router();
 
 userRouter.post("/api/createUser", userController.createUser);
 userRouter.post("/api/loginUser", userController.loginUser);
+userRouter.post("/api/:userName/addEventToUser", userController.addEventToUser);
 userRouter.get("/api/getAllUsers", userController.getAllUsers);
 userRouter.get("/api/getUserById/:id", protect, userController.getUserById);
 userRouter.put(

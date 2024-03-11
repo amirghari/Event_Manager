@@ -1,5 +1,4 @@
 import { Events } from '../../Hooks/useEvents'
-import { useEvents } from '../../Hooks/useEvents'
 import {
   Button,
   Card,
@@ -9,34 +8,47 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdLocationOn, MdDateRange } from 'react-icons/md'
+import { joinEvent } from '../../Hooks/userHook'
+interface EventCardProps {
+  event: Events
+  userId: string // Make sure to pass this prop from the parent component
+}
 
-const EventCard = ({ event }: { event: Events }) => {
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const [userName, setUserName] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Example: Fetch the user ID from local storage or authentication token
+    const storedUserName = localStorage.getItem('user')
+    setUserName(storedUserName)
+  }, [])
   const [joinButton, setJoinButton] = useState(false)
-  const { joinedEvents = [], setJoinedEvents } = useEvents()
+  const [isLoading, setIsLoading] = useState(false)
 
-  const eventHandler = (clickedEvent: Events) => {
-    console.log('Clicked Event:', clickedEvent)
-    const isEventJoined = joinedEvents.some(
-      (e: Events) => e.Id === clickedEvent.Id,
-    )
-    console.log('Is Event Joined:', isEventJoined)
-    if (!isEventJoined) {
-      setJoinButton(true)
-      setJoinedEvents([...joinedEvents, clickedEvent])
-    } else {
-      setJoinButton(false)
+  const eventHandler = async () => {
+    if (!userName) {
+      console.error('Username is not set.')
+      alert('You must be logged in to join an event.')
+      return
     }
-    // const isEventJoined = joinedEvents.some((e) => e.Id === clickedEvent.Id)
-    // if (!isEventJoined) {
-    //   setJoinedEvents([...joinedEvents, clickedEvent])
-    //   console.log('Joined Events:', joinedEvents)
-    //   setJoinButton(true) // Assuming you want to set the button state here as well
-    // } else {
-    //   setJoinedEvents(joinedEvents.filter((e) => e.Id !== clickedEvent.Id))
-    //   setJoinButton(false) // Assuming you want to unset the button state here as well
-    // }
+    setIsLoading(true)
+    try {
+      const response = await joinEvent(userName, event)
+      if (response.ok) {
+        setJoinButton(!joinButton)
+      } else {
+        const errorData = await response.json()
+        console.error('Failed to join event:', errorData.message)
+        alert(errorData.message)
+      }
+    } catch (error) {
+      console.error('Error joining event:', error)
+      alert('An error occurred while trying to join the event.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -56,8 +68,9 @@ const EventCard = ({ event }: { event: Events }) => {
             </HStack>
           </HStack>
           <Button
-            onClick={() => eventHandler(event)}
+            onClick={eventHandler}
             colorScheme={joinButton ? 'gray' : 'teal'}
+            isLoading={isLoading}
             variant="outline"
             size="sm"
           >
