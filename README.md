@@ -31,6 +31,4 @@ This project is a collaborative effort by Group 4 in the Software Engineering Pr
 
 We welcome contributions from the community. If you wish to contribute, please feel free to fork the repository, make your changes, and submit a pull request. Our team is excited to see how you can help improve Earth and make it even more beneficial for our community and the environment.
 
-### License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+ 
