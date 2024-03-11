@@ -10,3 +10,4 @@ export const getEvents = async (event: Event): Promise<Response> => {
     });
     return response;
   };
+

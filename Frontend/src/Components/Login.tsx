@@ -61,6 +61,8 @@ const Login: React.FC = () => {
       setUsername('')
       setPassword('')
       navigate('/EventApp')
+
+
     } catch (error) {
       console.error('Error during login', error)
       alert('Login failed, please try again later.')
