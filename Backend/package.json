@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "dev": "nodemon server.ts"
-  },
+    "build": "tsc",
+    "test": "jest" 
+  }
   "keywords": [],
   "author": "",
   "license": "ISC",
