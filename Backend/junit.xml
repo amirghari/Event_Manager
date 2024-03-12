@@ -32,4 +32,8 @@
     <testcase classname="User Model should create a new user" name="User Model should create a new user" time="0.193">
     </testcase>
   </testsuite>
+<<<<<<< HEAD
 </testsuites>
+=======
+</testsuites>
+>>>>>>> 6e34670d81fcd97eef043d21c0c27ffd695a8a02
