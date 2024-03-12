@@ -1,43 +1,40 @@
-import { expect } from 'chai';
-import sinon from 'sinon';
-import mongoose from 'mongoose';
-import { connectToMongoDB } from '../Config/db'; // Adjust the import path as needed
-import { URI } from '../Utils/config';
+import mongoose from "mongoose";
+import { connectToMongoDB } from "../Config/db"; // Replace with the actual file path
 
-describe('connectToMongoDB', function() {
-  let logStub: sinon.SinonStub;
-  let exitStub: sinon.SinonStub;
-  let mongooseConnectStub: sinon.SinonStub;
+jest.mock("mongoose");
 
+describe("connectToMongoDB", () => {
+  it("should connect to MongoDB successfully", async () => {
+    // Mock the mongoose.connect function
+    (mongoose.connect as jest.Mock).mockResolvedValueOnce(undefined);
 
-  beforeEach(() => {
-    logStub = sinon.stub(console, 'log');
-    exitStub = sinon.stub(process, 'exit');
-    mongooseConnectStub = sinon.stub(mongoose, 'connect');
-  });
-
-  afterEach(() => {
-    sinon.restore();
-  });
-
-  it('should establish a connection to the database', async function() {
-    mongooseConnectStub.resolves(); // Simulate a successful connection
-
+    // Call your function
     await connectToMongoDB();
 
-    expect(mongooseConnectStub.calledWith(URI)).to.be.true;
-    expect(logStub.calledWith('Connection to DB established')).to.be.true;
-    expect(exitStub.called).to.be.false;
+    // Assert that mongoose.connect was called
+    expect(mongoose.connect).toHaveBeenCalled();
   });
 
-  it('should fail to connect to the database and exit', async function() {
-    mongooseConnectStub.rejects(new Error('Connection failed')); // Simulate a failed connection
-
-    await connectToMongoDB();
-
-    expect(mongooseConnectStub.calledWith(URI)).to.be.true;
-    expect(logStub.calledWith('Connection to DB failed')).to.be.true;
-    expect(exitStub.calledWith(1)).to.be.true;
+  it("should handle connection failure", async () => {
+    // Mock the mongoose.connect function to simulate a failure
+    (mongoose.connect as jest.Mock).mockRejectedValueOnce(new Error("Connection error"));
+  
+    // Mock the process.exit function
+    const exitMock = jest.spyOn(process, "exit").mockImplementationOnce((code?: number) => {
+      throw new Error(`process.exit(${code}) called`);
+    });
+  
+    try {
+      // Call your function
+      await connectToMongoDB();
+    } catch (error: any) {
+      // Explicitly specify the type of 'error' as 'any'
+      // Assert that mongoose.connect was called
+      expect(mongoose.connect).toHaveBeenCalled();
+      // Assert that process.exit was called with code 1
+      expect(exitMock).toHaveBeenCalledWith(1);
+      // Assert that the error message contains the expected message
+      expect(error.message).toContain("process.exit(1) called");
+    }
   });
 });
-

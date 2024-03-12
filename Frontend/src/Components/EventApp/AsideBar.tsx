@@ -37,9 +37,11 @@ export interface EventParams {
 
 const AsideBar = () => {
   let id = 20
+  let id2 = ++id
+  id = id2
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [eventParams, setEventParams] = useState<EventParams>({
-    Id: id++,
+    Id: ++id2,
     Title: '',
     Description: '',
     Organizer: '',
@@ -63,6 +65,7 @@ const AsideBar = () => {
     } catch (error) {
       console.error('Failed to create event:', error)
     }
+    window.location.reload()
   }
 
   const initialRef = React.useRef(null)

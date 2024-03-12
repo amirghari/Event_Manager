@@ -73,6 +73,7 @@ function DrawerMenu() {
     } catch (error) {
       console.error('Failed to create event:', error)
     }
+    window.location.reload()
   }
 
   const initialRef = React.useRef(null)
