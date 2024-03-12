@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import eventController from '../Controller/eventController'; // Update the path as needed
 import { Event } from '../Models/eventModel';
-import { User } from '../Models/userModel';
+//import { User } from '../Models/userModel';
 
 jest.mock('../Models/eventModel');
 jest.mock('../Models/userModel');

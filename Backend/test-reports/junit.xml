@@ -1,35 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="11" failures="0" errors="0" time="11.038">
-  <testsuite name="connectToMongoDB" errors="0" failures="0" skipped="0" timestamp="2024-03-12T14:45:06" time="5.956" tests="2">
-    <testcase classname="connectToMongoDB should connect to MongoDB successfully" name="connectToMongoDB should connect to MongoDB successfully" time="0.042">
+<testsuites name="jest tests" tests="22" failures="0" errors="0" time="16.984">
+  <testsuite name="Event Router" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="9.014" tests="5">
+    <testcase classname="Event Router POST /api/createEvent calls createEvent with request body" name="Event Router POST /api/createEvent calls createEvent with request body" time="0.334">
     </testcase>
-    <testcase classname="connectToMongoDB should handle connection failure" name="connectToMongoDB should handle connection failure" time="0.005">
+    <testcase classname="Event Router GET /api/getAllEvents calls getAllEvents" name="Event Router GET /api/getAllEvents calls getAllEvents" time="0.014">
     </testcase>
-  </testsuite>
-  <testsuite name="Event Controller" errors="0" failures="0" skipped="0" timestamp="2024-03-12T14:45:06" time="6.263" tests="3">
-    <testcase classname="Event Controller createEvent should create a new event" name="Event Controller createEvent should create a new event" time="0.018">
+    <testcase classname="Event Router GET /api/getEventById/:id calls getEventById with correct id" name="Event Router GET /api/getEventById/:id calls getEventById with correct id" time="0.009">
     </testcase>
-    <testcase classname="Event Controller createEvent should handle validation errors" name="Event Controller createEvent should handle validation errors" time="0">
+    <testcase classname="Event Router PUT /api/updateEventById/:id calls updateEventById with correct id and body" name="Event Router PUT /api/updateEventById/:id calls updateEventById with correct id and body" time="0.008">
     </testcase>
-    <testcase classname="Event Controller createEvent should handle errors during event creation" name="Event Controller createEvent should handle errors during event creation" time="0.001">
+    <testcase classname="Event Router DELETE /api/deleteEventById/:id calls deleteEventById with correct id" name="Event Router DELETE /api/deleteEventById/:id calls deleteEventById with correct id" time="0.007">
     </testcase>
   </testsuite>
-  <testsuite name="UserController" errors="0" failures="0" skipped="0" timestamp="2024-03-12T14:45:06" time="6.354" tests="3">
-    <testcase classname="UserController createUser should create a new user" name="UserController createUser should create a new user" time="0.088">
+  <testsuite name="User Router" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="10.615" tests="6">
+    <testcase classname="User Router POST /api/createUser calls createUser" name="User Router POST /api/createUser calls createUser" time="0.385">
     </testcase>
-    <testcase classname="UserController createUser should handle error during user creation" name="UserController createUser should handle error during user creation" time="0.068">
+    <testcase classname="User Router POST /api/loginUser calls loginUser" name="User Router POST /api/loginUser calls loginUser" time="0.021">
     </testcase>
-    <testcase classname="UserController createUser should handle existing email during user creation" name="UserController createUser should handle existing email during user creation" time="0.001">
+    <testcase classname="User Router POST /api/:userName/addEventToUser calls addEventToUser" name="User Router POST /api/:userName/addEventToUser calls addEventToUser" time="0.014">
+    </testcase>
+    <testcase classname="User Router GET /api/:userName/isEventJoined/:eventId calls isEventJoined" name="User Router GET /api/:userName/isEventJoined/:eventId calls isEventJoined" time="0.033">
+    </testcase>
+    <testcase classname="User Router GET /api/:userName/events calls getUsersEventsByName" name="User Router GET /api/:userName/events calls getUsersEventsByName" time="0.023">
+    </testcase>
+    <testcase classname="User Router GET /api/getAllUsers calls getAllUsers" name="User Router GET /api/getAllUsers calls getAllUsers" time="0.012">
     </testcase>
   </testsuite>
-  <testsuite name="Event Model" errors="0" failures="0" skipped="0" timestamp="2024-03-12T14:45:06" time="6.396" tests="2">
-    <testcase classname="Event Model should create a new event with valid data" name="Event Model should create a new event with valid data" time="0.148">
+  <testsuite name="connectToMongoDB" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="10.752" tests="2">
+    <testcase classname="connectToMongoDB should connect to MongoDB successfully" name="connectToMongoDB should connect to MongoDB successfully" time="0.072">
     </testcase>
-    <testcase classname="Event Model should not create an event without required fields" name="Event Model should not create an event without required fields" time="0.032">
+    <testcase classname="connectToMongoDB should handle connection failure" name="connectToMongoDB should handle connection failure" time="0.025">
     </testcase>
   </testsuite>
-  <testsuite name="User Model" errors="0" failures="0" skipped="0" timestamp="2024-03-12T14:45:06" time="6.462" tests="1">
-    <testcase classname="User Model should create a new user" name="User Model should create a new user" time="0.21">
+  <testsuite name="Event Model" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="11.343" tests="2">
+    <testcase classname="Event Model should create a new event with valid data" name="Event Model should create a new event with valid data" time="0.179">
+    </testcase>
+    <testcase classname="Event Model should not create an event without required fields" name="Event Model should not create an event without required fields" time="0.038">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Model" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="11.407" tests="1">
+    <testcase classname="User Model should create a new user" name="User Model should create a new user" time="0.264">
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Controller" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="11.424" tests="3">
+    <testcase classname="Event Controller createEvent should create a new event" name="Event Controller createEvent should create a new event" time="0.041">
+    </testcase>
+    <testcase classname="Event Controller createEvent should handle validation errors" name="Event Controller createEvent should handle validation errors" time="0.007">
+    </testcase>
+    <testcase classname="Event Controller createEvent should handle errors during event creation" name="Event Controller createEvent should handle errors during event creation" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="UserController" errors="0" failures="0" skipped="0" timestamp="2024-03-12T16:38:33" time="11.642" tests="3">
+    <testcase classname="UserController createUser should create a new user" name="UserController createUser should create a new user" time="0.182">
+    </testcase>
+    <testcase classname="UserController createUser should handle error during user creation" name="UserController createUser should handle error during user creation" time="0.11">
+    </testcase>
+    <testcase classname="UserController createUser should handle existing email during user creation" name="UserController createUser should handle existing email during user creation" time="0.004">
     </testcase>
   </testsuite>
 </testsuites>
