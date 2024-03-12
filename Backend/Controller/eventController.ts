@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import { Event } from "../Models/eventModel";
 import { User } from "../Models/userModel";
 
@@ -13,7 +13,7 @@ const createEvent = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-  try {
+    // Assuming `Id` is handled automatically or not necessary due to MongoDB's `_id`
     const event = await Event.create({
       Id,
       Title,
@@ -22,35 +22,16 @@ const createEvent = async (req: Request, res: Response): Promise<void> => {
       Location,
       Date,
       Time,
-      Image, 
+      Image,
     });
 
-    console.log("Event created", event);
-
-    res.status(201).json({
-      message: "Event created successfully",
-      event: {
-        id: event.Id, // Match the case with your schema
-        title: event.Title,
-        description: event.Description,
-        organizer: event.Organizer,
-        location: event.Location,
-        date: event.Date,
-        time: event.Time,
-        user_id: event.User_id, // Match the case with your schema
-      }
-    });
-  } catch (error: any) {
+    console.log("Event data added");
+    res.status(201).json(event);
+  } catch (error) {
     console.error("Error occurred in adding event data", error);
-
-    // Log validation errors
-    if (error.name === "ValidationError") {
-      console.error("Validation errors:", error.errors);
-    }
     res.status(500).json({ message: "Error occurred in adding event data" });
   }
 };
-
 
 
 const getAllEvents = async (_req: Request, res: Response): Promise<void> => {
