@@ -40,13 +40,15 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                junit '**/Backend/Test/**/*.xml'
+                // Adjust the path to the location of your Jest JUnit reports
+                junit 'Backend/test-reports/*.xml'
             }
         }
     }
     
     post {
         always {
+            // Cleans up the workspace after the build is done
             cleanWs()
         }
     }
