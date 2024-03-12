@@ -2,7 +2,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "json-server": "^1.0.0-alpha.23",
-    "mongoose": "^8.2.1"
+    "mongoose": "^8.2.1",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/node": "^20.11.25"
