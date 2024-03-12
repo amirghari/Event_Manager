@@ -42,7 +42,9 @@ const createUser = async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    console.error("Error occurred in createUser:", error);
+    if (process.env.NODE_ENV !== 'test') {
+      console.error("Error occurred in createUser:", error);
+    }
     res.status(500).json({ message: "Error occurred in adding user data" });
   }
 };

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
+    "test:html": "jest --reporters=default --reporters=jest-junit",
     "dev": "nodemon server.ts"
   },
   "keywords": [],
@@ -31,10 +32,15 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^20.11.25",
     "@types/sinon": "^17.0.3",
     "jenkins-mocha": "^11.0.0",
     "jest": "^29.7.0",
+    "jest-html-reporters": "^3.1.7",
+    "jest-junit": "^16.0.0",
+    "jest-junit-reporter": "^1.1.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.2"
