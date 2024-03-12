@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from GitHub repository
                 git branch: 'main', url: 'https://github.com/amirghari/Event_Manager.git'
             }
         }
@@ -12,10 +11,13 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Navigate to the Backend directory
                     dir('Backend') {
-                        // Install dependencies
-                        sh 'npm install'
+                        // Dynamically select the command based on the OS
+                        if (isUnix()) {
+                            sh 'npm install'
+                        } else {
+                            bat 'npm install'
+                        }
                     }
                 }
             }
@@ -24,10 +26,13 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Navigate to the Backend directory and run tests
                     dir('Backend') {
-                        // Run tests and generate JUnit reports
-                        sh 'npm test'
+                        // Dynamically select the command based on the OS
+                        if (isUnix()) {
+                            sh 'npm test'
+                        } else {
+                            bat 'npm test'
+                        }
                     }
                 }
             }
@@ -35,8 +40,6 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                // Publish JUnit test results
-                // The path needs to be adjusted based on where your test reports are generated within the Backend directory
                 junit '**/Backend/Test/**/*.xml'
             }
         }
@@ -44,7 +47,6 @@ pipeline {
     
     post {
         always {
-            // Cleanup after pipeline execution
             cleanWs()
         }
     }
