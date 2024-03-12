@@ -27,4 +27,4 @@ dist-ssr
 node_modules/
 
 # Environment configuration
-.env
+#.env
