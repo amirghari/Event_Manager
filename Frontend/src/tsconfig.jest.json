@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "jsx": "react-jsx",
+      "outDir": "./dist", // Override if needed
+      // Additional or overridden options here
+    },
+    "include": ["src/**/*", "src/Tests/**/*"],
+    "exclude": ["node_modules", "dist", "build"]
+  }
+  

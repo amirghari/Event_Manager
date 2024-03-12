@@ -8,8 +8,7 @@ const eventSchema = new Schema({
     Location: { type: String, required: true },
     Date: { type: Date, required: true },
     Time: { type: String, required: true },
-    //Image: { type: String, required: false },
-    User_id: { type: Schema.Types.ObjectId, required: true}
+    Image: { type: String, required: false },
 }, {
     collection: "events"
 });

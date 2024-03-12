@@ -16,46 +16,54 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react'
-import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for making HTTP requests
-
+import React, { useState } from 'react'
+import { useEventApi } from '../../Hooks/createEvent'
 import {
   MdOutlineEventAvailable,
   MdOutlineSpaceDashboard,
   MdSearch,
   MdAccountCircle,
 } from 'react-icons/md'
+export interface EventParams {
+  Id: number
+  Title: string
+  Description: string
+  Organizer: string
+  Location: string
+  Date: string
+  Time: string
+  Image: string
+}
 
 const AsideBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [eventData, setEventData] = useState({
-    title: '',
-    description: '',
-    organizer: '',
-    location: '',
-    dateTime: '',
-    time: '',
-    user_id: ''
-  });
+  let id = 20
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [eventParams, setEventParams] = useState<EventParams>({
+    Id: id++,
+    Title: '',
+    Description: '',
+    Organizer: '',
+    Location: '',
+    Date: '',
+    Time: '',
+    Image: '',
+  })
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEventData({ ...eventData, [name]: value });
-  };
+  const { createEvent } = useEventApi()
 
-  const handleSubmit = () => {
-    // Make a POST request to your backend API
-    axios.post('http://localhost:3000/api/createEvent', eventData)
-      .then(response => {
-        // Handle success if needed
-        console.log('Event created successfully:', response.data);
-        onClose(); // Close the modal after successful submission
-      })
-      .catch(error => {
-        // Handle errors if needed
-        console.error('Error creating event:', error);
-      });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEventParams({ ...eventParams, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async () => {
+    try {
+      await createEvent(eventParams)
+      console.log('Event created successfully')
+      onClose()
+    } catch (error) {
+      console.error('Failed to create event:', error)
+    }
+  }
 
   const initialRef = React.useRef(null)
   return (
@@ -63,7 +71,7 @@ const AsideBar = () => {
       marginTop={'10px'}
       padding={'50px'}
       bgColor={'#B6CC76'}
-      height={'50vh'}
+      height={'43vh'}
       marginLeft="30px"
       borderRadius={10}
       spacing={12}
@@ -114,83 +122,72 @@ const AsideBar = () => {
                 <FormControl>
                   <FormLabel>Event Title</FormLabel>
                   <Input
-                    ref={initialRef}
-                    focusBorderColor="green.500"
+                    name="Title"
                     placeholder="Event Title"
-                    name="title"
-                    value={eventData.title}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                   />
                 </FormControl>
 
                 <FormControl mt={4}>
                   <FormLabel>Description</FormLabel>
                   <Input
-                    focusBorderColor="green.500"
+                    name="Description"
                     placeholder="Description"
-                    name="description"
-                    value={eventData.description}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                   />
                 </FormControl>
+
                 <FormControl mt={4}>
                   <FormLabel>Organizer</FormLabel>
-                  <Input 
-                    focusBorderColor="green.500"
+                  <Input
+                    name="Organizer"
                     placeholder="Organizer"
-                    name="organizer"
-                    value={eventData.organizer}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                   />
                 </FormControl>
+
                 <FormControl mt={4}>
                   <FormLabel>Location</FormLabel>
-                  <Input 
-                    focusBorderColor="green.500" 
+                  <Input
+                    name="Location"
                     placeholder="Location"
-                    name="location"
-                    value={eventData.location}
-                    onChange={handleInputChange} 
-                  />
-
-                </FormControl>
-                <FormControl mt={4}>
-                  <FormLabel>Date & Time</FormLabel>
-                  <Input
-                    placeholder="Select Date and Time"
-                    size="md"
-                    type="datetime-local"
-                    focusBorderColor="green.500"
-                    name="dateTime"
-                    value={eventData.dateTime}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                   />
                 </FormControl>
 
                 <FormControl mt={4}>
-                  <FormLabel>Set time Image</FormLabel>
+                  <FormLabel>Date</FormLabel>
                   <Input
-                    focusBorderColor="green.500"
-                    placeholder='Set time'
-                    name= 'time'
-                    value={eventData.time}
-                    onChange={handleInputChange}
+                    name="Date"
+                    type="date"
+                    placeholder="Select the Date"
+                    onChange={handleChange}
                   />
                 </FormControl>
 
                 <FormControl mt={4}>
-                  <FormLabel>User ID</FormLabel>
+                  <FormLabel>Time</FormLabel>
                   <Input
-                    focusBorderColor="green.500"
-                    placeholder="User ID"
-                    name="user_id"
-                    value={eventData.user_id}
-                    onChange={handleInputChange}
+                    name="Time"
+                    type="time"
+                    placeholder="Select the Time"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <FormControl mt={4}>
+                  <FormLabel>Image Url</FormLabel>
+                  <Input
+                    name="Image"
+                    placeholder="Image Url"
+                    onChange={handleChange}
                   />
                 </FormControl>
               </ModalBody>
               <ModalFooter>
-                <Button colorScheme="green" mr={3} onClick={handleSubmit}>Submit</Button>
+                <Button colorScheme="green" mr={3} onClick={handleSubmit}>
+                  Submit
+                </Button>
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>
             </ModalContent>

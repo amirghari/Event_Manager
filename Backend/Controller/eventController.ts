@@ -4,14 +4,14 @@ import { User } from "../Models/userModel";
 
 // Assuming Event and User models are properly typed according to your MongoDB schema
 
-const createEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  console.log(req.body);
+const createEvent = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { Id, Title, Description, Organizer, Location, Date, Time, Image } = req.body;
 
-  const { Id, Title, Description, Organizer, Location, Date, Time, UserId } = req.body;
-
-  if (!Id || !Title || !Description || !Organizer || !Location || !Date || !Time || !UserId) {
-    res.status(400).json({ message: "Please fill in all required fields" });
-  }
+    if (!Id || !Title || !Description || !Organizer || !Location || !Date || !Time) {
+      res.status(400).json({ message: "Please fill in all required fields" });
+      return;
+    }
 
   try {
     const event = await Event.create({
@@ -22,7 +22,7 @@ const createEvent = async (req: Request, res: Response, next: NextFunction): Pro
       Location,
       Date,
       Time,
-      User_id: UserId, // Match the case with your schema
+      Image, 
     });
 
     console.log("Event created", event);
