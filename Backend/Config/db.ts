@@ -8,7 +8,7 @@ export const connectToMongoDB = async () => {
       return true;
     } catch (error) {
       console.error("Connection to DB failed");
-      console.error(error instanceof Error ? error.message : String(error));  // Convert error to string
+      console.error(error);
       return false;
     }
   };

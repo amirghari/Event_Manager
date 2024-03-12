@@ -4,7 +4,7 @@ import { Event } from '../Models/eventModel';
 describe('Event Model', () => {
 beforeAll(async () => {
     // Connect to the MongoDB database before running the tests
-    await mongoose.connect('mongodb+srv://wondomen2:test123456@cluster0.cdwpqvf.mongodb.net/?retryWrites=true&w=majority', {
+    await mongoose.connect('mongodb+srv://amirghari:Ag9776Hg0483@eventmanager.oxb4lh6.mongodb.net/?retryWrites=true&w=majority&appName=EventManager', {
         useUnifiedTopology: true,
     } as any);
 });
