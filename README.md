@@ -38,7 +38,8 @@ We welcome contributions from the community. If you wish to contribute, please f
 
 Earth's user interface has been designed to be intuitive and responsive, providing a seamless experience whether you're on a desktop or mobile device.
 
-![Earth Main Page]([path-to-your-main-page-screenshot](https://github.com/amirghari/Event_Manager/blob/main/Ui/Screenshot%202024-03-14%20at%2016.47.52.png))
+![Earth Main Page](https://github.com/amirghari/Event_Manager/blob/main/Ui/Screenshot%202024-03-14%20at%2016.47.52.png)
+
 ![Earth Application Page](https://github.com/amirghari/Event_Manager/blob/main/Ui/Screenshot%202024-03-14%20at%2016.47.33.png)
 
 ### Testing and Automation
@@ -51,5 +52,5 @@ Our project leverages automated testing and CI/CD practices:
 ![Jenkins Pipeline](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/Jenkins_Pipline_.png)
 ![Jenkins Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/JenkinsBackendTest.png)
 ![Jest Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Backend/test-reports/Backend%20Testing.png)
-![Docker Image Creation](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/eventmanager_dockerhub.pngt)
+![Docker Image Creation](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/eventmanager_dockerhub.png)
 
