@@ -1,34 +1,55 @@
 # Earth - Event Manager
 
-Welcome to Earth, the Event Manager application dedicated to fostering a deep connection between human beings and mother nature. Our platform serves as a conduit for creating and participating in outdoor events such as hiking, camping, and various other nature-centric activities. By nurturing a community that actively values and engages with the natural world, our mission is to reinforce the bond between individuals and the environment, promoting a healthier planet and lifestyle.
+Welcome to Earth, an Event Manager application designed to bridge the gap between human beings and mother nature. Our platform facilitates the creation and participation in outdoor events such as hiking, camping, and other nature-related activities. By fostering a community that values and engages with the natural world, we aim to strengthen the bond between individuals and the environment. Our application ensures a responsive web design, making it accessible and easily navigable on a variety of devices, enhancing the user experience.
 
 ## Application Overview
 
-Earth is structured around two main sections: the Main Page and the Application Page, designed to offer a seamless and engaging user experience.
+Earth is comprised of two primary sections: the Main Page and the Application Page.
 
-- **Main Page:** This welcoming entry point provides users with a succinct overview of Earth's offerings, encouraging exploration and participation.
-- **Application Page:** After completing the registration and login process, users gain the ability to join existing events or create new ones, inviting the community to partake in unique outdoor experiences.
+- **Main Page:** A welcoming entry point that provides users with an overview of what Earth offers.
+- **Application Page:** After registration and login, users can join events created by others or create their own events for the community to enjoy.
 
 ### Getting Started
 
-Engaging with the Earth platform is simple and straightforward. Users are encouraged to:
+To fully engage with Earth, users are required to:
 
-1. **Register:** Sign up to create a personal account.
-2. **Login:** Log in to your account to either join community events or create your own.
+1. **Register:** Sign up to create an account.
+2. **Login:** Access your account to join or create events.
 
 ### Technology Stack
 
-Our application leverages a modern technology stack to ensure a responsive, intuitive, and reliable user experience:
+This application is built using the following technologies:
 
-- **Frontend:** Developed with React and Vite for a fast, efficient, and scalable user interface.
-- **Backend:** Utilizing Express with TypeScript to provide a robust server-side foundation.
-- **Styling Framework:** We integrated Chakra UI for its flexible and accessible component library, which greatly enhances the application's visual appeal and user experience.
-- **Database:** MongoDB is employed as our database solution, enabling us to manage a relational database structure that effectively supports the dynamic nature of our events and user interactions.
+- **Frontend:** React + Vite, styled using Chakra UI for a sleek and modern look.
+- **Backend:** Express with TypeScript, ensuring efficient backend operations.
+- **Database:** MongoDB, providing a scalable and relational database solution for storing event data.
+- **Testing:** Backend logic is verified with Jest to maintain high-quality code.
+- **CI/CD:** Jenkins orchestrates our continuous integration and delivery pipeline, enhancing our development workflow.
 
 ### Created by Group 4
 
-Earth represents a collective endeavor by Group 4 in the Software Engineering Project 1 course at Metropolia University of Applied Sciences. This project is born from our shared commitment to environmental stewardship and community engagement.
+This project is a collaborative effort by Group 4 in the Software Engineering Project 1 course at Metropolia University of Applied Sciences.
 
 ### Contributing
 
-Contributions from the wider community are highly encouraged and valued. Should you wish to contribute to the Earth project, we invite you to fork the repository, implement your enhancements, and submit a pull request. Our team eagerly anticipates your innovations and how they might further enrich the Earth platform, benefiting both our community and the environment at large.
+We welcome contributions from the community. If you wish to contribute, please feel free to fork the repository, make your changes, and submit a pull request. Our team is excited to see how you can help improve Earth and make it even more beneficial for our community and the environment.
+
+### User Interface
+
+Earth's user interface has been designed to be intuitive and responsive, providing a seamless experience whether you're on a desktop or mobile device.
+
+![Earth Main Page]([path-to-your-main-page-screenshot](https://github.com/amirghari/Event_Manager/blob/main/Ui/Screenshot%202024-03-14%20at%2016.47.52.png))
+![Earth Application Page](https://github.com/amirghari/Event_Manager/blob/main/Ui/Screenshot%202024-03-14%20at%2016.47.33.png)
+
+### Testing and Automation
+
+Our project leverages automated testing and CI/CD practices:
+
+- **Jest:** Used to run tests on our backend to ensure each feature behaves as expected.
+- **Jenkins:** Manages our automated pipelines, which includes running tests and creating Docker images for deployment.
+
+![Jenkins Pipeline](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/Jenkins_Pipline_.png)
+![Jenkins Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/JenkinsBackendTest.png)
+![Jest Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Backend/test-reports/Backend%20Testing.png)
+![Docker Image Creation](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/eventmanager_dockerhub.pngt)
+
