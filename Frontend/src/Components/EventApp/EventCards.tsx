@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from 'react'
 import { MdLocationOn, MdDateRange } from 'react-icons/md'
 import { joinEvent, checkEventJoined } from '../../Hooks/userHook'
+import { FaRegClock } from 'react-icons/fa'
 interface EventCardProps {
   event: Events
   userId: string
@@ -63,25 +64,31 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <Image src={event.Image} alt="Image Description" />
         <CardBody>
           <Heading fontSize={'18px'}>{event.Title}</Heading>
-          <HStack justifyContent={'space-between'} marginY={'4px'}>
+          <HStack marginTop={'4px'}>
             <HStack>
               <MdDateRange color="#74A848" />
               <Text fontSize={'10px'}>{event.Date}</Text>
             </HStack>
-            <HStack>
+            <HStack marginLeft={'65px'}>
               <MdLocationOn color="#74A848" />
               <Text fontSize={'10px'}>{event.Location}</Text>
             </HStack>
           </HStack>
-          <Button
-            onClick={eventHandler}
-            colorScheme={joinButton ? 'gray' : 'teal'}
-            isLoading={isLoading}
-            variant="outline"
-            size="sm"
-          >
-            {joinButton ? 'Joined' : 'Join'}
-          </Button>
+          <HStack marginTop={'4px'}>
+            <Button
+              onClick={eventHandler}
+              colorScheme={joinButton ? 'gray' : 'teal'}
+              isLoading={isLoading}
+              variant="outline"
+              size="sm"
+            >
+              {joinButton ? 'Joined' : 'Join'}
+            </Button>
+            <HStack marginLeft={'65px'}>
+              <FaRegClock color="#74A848" />
+              <Text fontSize={'10px'}>{event.Time}</Text>
+            </HStack>
+          </HStack>
         </CardBody>
       </Card>
     </>
