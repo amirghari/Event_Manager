@@ -13,7 +13,7 @@ import { MdLocationOn, MdDateRange } from 'react-icons/md'
 import { joinEvent, checkEventJoined } from '../../Hooks/userHook'
 interface EventCardProps {
   event: Events
-  userId: string nt
+  userId: string
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {

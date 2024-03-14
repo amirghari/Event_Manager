@@ -25,8 +25,5 @@ app.listen(PORT, (): void => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Use the routes
-// Note: Make sure your userRoute and eventRoute are properly exported and imported.
-// TypeScript might require you to adjust how you're exporting and importing these routes.
 app.use('/', eventRoute);
 app.use('/', userRoute);
