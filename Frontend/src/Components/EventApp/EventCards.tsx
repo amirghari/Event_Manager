@@ -13,14 +13,13 @@ import { MdLocationOn, MdDateRange } from 'react-icons/md'
 import { joinEvent, checkEventJoined } from '../../Hooks/userHook'
 interface EventCardProps {
   event: Events
-  userId: string // Make sure to pass this prop from the parent component
+  userId: string nt
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
-    // Example: Fetch the user ID from local storage or authentication token
     const storedUserName = localStorage.getItem('user')
     setUserName(storedUserName)
 

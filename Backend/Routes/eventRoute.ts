@@ -9,12 +9,10 @@ eventRouter.get("/api/getAllEvents", eventController.getAllEvents);
 eventRouter.get("/api/getEventById/:id",eventController.getEventById);
 eventRouter.put(
   "/api/updateEventById/:id",
-  // protect,
   eventController.updateEventById
 );
 eventRouter.delete(
   "/api/deleteEventById/:id",
-  // protect,
   eventController.deleteEventById
 );
 

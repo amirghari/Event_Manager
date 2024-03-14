@@ -1,4 +1,3 @@
-// src/hooks/useEventApi.ts or a similar service file
 import { EventParams } from "../Components/EventApp/AsideBar";
 const API: string = "http://localhost:3000";
 

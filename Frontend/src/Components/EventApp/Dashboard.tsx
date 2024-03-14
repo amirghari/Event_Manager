@@ -9,11 +9,10 @@ const Dashboard = () => {
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
-    // Example: Fetch the user ID from local storage or authentication token
     const storedUserName = localStorage.getItem('user')
     setUserName(storedUserName)
   }, [])
-  const { joinedEvents } = useUserEvents(userName || '') // Provide a default value of an empty string for userName
+  const { joinedEvents } = useUserEvents(userName || '')
   return (
     <Grid
       templateAreas={{

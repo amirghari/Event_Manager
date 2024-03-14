@@ -3,7 +3,6 @@ import MainHome from './MainHome'
 import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
 import Footer from './Footer'
-// import TaskDisplay from './TaskDisplay'
 
 const Home = () => {
   return (

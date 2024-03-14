@@ -3,8 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { User } from "../Models/userModel";
 import { Event } from "../Models/eventModel";
-// Assuming your User model correctly reflects your database schema
-// and you have installed the necessary types for Express and Mongoose.
+
 
 const createUser = async (req: Request, res: Response) => {
   try {
@@ -47,10 +46,9 @@ const createUser = async (req: Request, res: Response) => {
   }
 };
 
-// The actual implementation of addEventToUser in your userController
 const addEventToUser = async (req: Request, res: Response): Promise<void> => {
   const { userName } = req.params;
-  const event: Event = req.body; // Assuming Event matches the interface
+  const event: Event = req.body; 
 
   try {
     const updatedUser = await User.findOneAndUpdate(
@@ -131,7 +129,6 @@ const updateUserById = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   const { username, password, firstname, lastname, email } = req.body;
 
-  // Optional: Add logic to hash the new password if it's being updated.
   let hashedPassword = undefined;
   if (password) {
     const salt = await bcrypt.genSalt(10);
@@ -148,7 +145,6 @@ const updateUserById = async (req: Request, res: Response): Promise<void> => {
         ...(lastname && { lastname }),
         ...(email && { email }),
       },
-      { new: true } // Return the modified document rather than the original.
     );
 
     if (!updatedUser) {
@@ -177,8 +173,6 @@ const deleteUserById = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // You might want to send back a confirmation message or the deleted user data.
-    // Here, we're just confirming the deletion.
     res.status(200).json({ message: "User successfully deleted", userId: id });
   } catch (error) {
     console.error("Error occurred in deleteUserById:", error);
@@ -187,18 +181,14 @@ const deleteUserById = async (req: Request, res: Response): Promise<void> => {
 };
 export const getUsersEventsByName = async (req: Request, res: Response): Promise<Response> => {
   try {
-    // Get the username from the request parameters
     const { userName } = req.params;
 
-    // Find the user by username
     const user = await User.findOne({ username: userName });
 
-    // If the user does not exist, return a 404
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Return the events of the found user
     return res.status(200).json(user.events);
   } catch (error) {
     console.error('Error fetching user events:', error);

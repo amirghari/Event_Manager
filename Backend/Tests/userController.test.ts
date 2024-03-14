@@ -3,13 +3,13 @@ import * as jwt from 'jsonwebtoken';
 import UserController from '../Controller/userController';
 import { User } from '../Models/userModel';
 
-// Mocking external dependencies
+
 jest.mock('../Models/userModel');
 
-// Mock jwt.sign
+
 jest.mock('jsonwebtoken', () => ({
   sign: jest.fn((payload: any, secretOrPrivateKey: any, options: any) => {
-    return 'mockToken'; // Replace with your desired mock token
+    return 'mockToken'; 
   }),
 }));
 
@@ -45,7 +45,7 @@ describe('UserController', () => {
         firstname: 'John',
       };
 
-      // Provide type annotations for mocks
+      
       (User.findOne as jest.Mock).mockResolvedValue(null);
       (User.create as jest.Mock).mockResolvedValue(mockUser);
       (jwt.sign as jest.Mock).mockReturnValue('mockToken');
@@ -70,7 +70,7 @@ describe('UserController', () => {
         email: 'test@example.com',
       };
 
-      // Provide type annotations for mocks
+      
       (User.findOne as jest.Mock).mockResolvedValue(null);
       (User.create as jest.Mock).mockRejectedValue(new Error('Mock error'));
 
@@ -91,7 +91,7 @@ describe('UserController', () => {
         email: 'test@example.com',
       };
 
-      // Provide type annotations for mocks
+     
       (User.findOne as jest.Mock).mockResolvedValue({ email: 'test@example.com' });
 
       await UserController.createUser(req, res);
@@ -103,5 +103,5 @@ describe('UserController', () => {
     });
   });
 
-  // ... (other tests)
+  
 });

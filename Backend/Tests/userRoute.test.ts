@@ -1,10 +1,10 @@
 import request from 'supertest';
 import express, { Express } from 'express';
-import userRouter from '../Routes/userRoute'; // Adjust the import path
-import userController from '../Controller/userController'; // Adjust the import path
-import { protect } from '../Middleware/authMiddleware'; // Adjust the import path
+import userRouter from '../Routes/userRoute';
+import userController from '../Controller/userController';
+import { protect } from '../Middleware/authMiddleware';
 
-// Mock the userController and authMiddleware
+
 jest.mock('../Controller/userController', () => ({
   createUser: jest.fn().mockImplementation((req, res) => res.sendStatus(201)),
   loginUser: jest.fn().mockImplementation((req, res) => res.sendStatus(200)),

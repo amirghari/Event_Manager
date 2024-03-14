@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import eventController from '../Controller/eventController'; // Update the path as needed
 import { Event } from '../Models/eventModel';
-//import { User } from '../Models/userModel';
+
 
 jest.mock('../Models/eventModel');
 jest.mock('../Models/userModel');
@@ -48,7 +48,6 @@ describe('Event Controller', () => {
     it('should handle validation errors', async () => {
       const req: Partial<Request> = {
         body: {
-          // Omit required fields intentionally to trigger validation error
         },
       };
       const res: Partial<Response> = {
@@ -67,7 +66,6 @@ describe('Event Controller', () => {
     it('should handle errors during event creation', async () => {
       const req: Partial<Request> = {
         body: {
-          // Valid event data
         },
       };
       const res: Partial<Response> = {
@@ -86,5 +84,5 @@ describe('Event Controller', () => {
     });
   });
 
-  // Similar tests can be written for other controller functions like getAllEvents, getEventById, etc.
+
 });

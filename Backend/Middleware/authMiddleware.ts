@@ -6,10 +6,8 @@ dotenv.config();
 
 interface DecodedUser {
   id: string;
-  // Include other properties decoded from the token as necessary
 }
 
-// Extending Express's Request type to include the user property
 declare global {
   namespace Express {
     interface Request {

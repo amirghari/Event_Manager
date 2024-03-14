@@ -15,7 +15,6 @@ export interface Events {
 
 const API: string = "http://localhost:3000";
 
-// This function will be used inside a component
 export const useEvents = () => {
     const [events, setEvents] = useState<Event[]>([]);
     const [error, setError] = useState<Error | null>(null);

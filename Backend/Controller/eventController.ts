@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { Event } from "../Models/eventModel";
 import { User } from "../Models/userModel";
 
-// Assuming Event and User models are properly typed according to your MongoDB schema
 
 const createEvent = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -13,7 +12,6 @@ const createEvent = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Assuming `Id` is handled automatically or not necessary due to MongoDB's `_id`
     const event = await Event.create({
       Id,
       Title,

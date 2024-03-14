@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-import { User } from '../Models/userModel'; // Update with the correct path
+import { User } from '../Models/userModel';
 
-// Augment the existing mongoose types to include useUnifiedTopology
 declare module 'mongoose' {
   interface ConnectOptions {
     useUnifiedTopology?: boolean;
@@ -10,19 +9,19 @@ declare module 'mongoose' {
 
 describe('User Model', () => {
   beforeAll(async () => {
-    // Connect to a mock MongoDB database before running tests
+   
     await mongoose.connect('mongodb+srv://wondomen2:test123456@cluster0.cdwpqvf.mongodb.net/?retryWrites=true&w=majority', {
       useUnifiedTopology: true,
     });
   });
 
   afterAll(async () => {
-    // Disconnect from the mock MongoDB database after all tests are done
+   
     await mongoose.disconnect();
   });
 
   beforeEach(async () => {
-    // Clear the User collection before each test
+   
     await User.deleteMany({});
   });
 
@@ -57,5 +56,5 @@ describe('User Model', () => {
     expect(savedUser!.events[0].Title).toBe('Test Event');
   });
 
-  // Add more test cases as needed
+ 
 });

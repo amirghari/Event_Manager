@@ -1,7 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Login.css'
-// Ensure you have a loginUser function defined in your hooks that returns a Promise
 import { loginUser } from '../Hooks/userHook'
 import { ReactSVG } from 'react-svg'
 
@@ -46,7 +45,7 @@ const Login: React.FC = () => {
 
     try {
       const loginData = { username, password }
-      const response = await loginUser(loginData) // loginUser should handle the POST request
+      const response = await loginUser(loginData)
 
       if (!response.ok) {
         alert('Incorrect username or password')
@@ -61,8 +60,6 @@ const Login: React.FC = () => {
       setUsername('')
       setPassword('')
       navigate('/EventApp')
-
-
     } catch (error) {
       console.error('Error during login', error)
       alert('Login failed, please try again later.')

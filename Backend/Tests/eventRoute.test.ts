@@ -1,9 +1,9 @@
 import request from 'supertest';
 import express, { Express } from 'express';
-import eventRouter from '../Routes/eventRoute'; // Adjust the import path
-import eventController from '../Controller/eventController'; // Adjust the import path
+import eventRouter from '../Routes/eventRoute';
+import eventController from '../Controller/eventController';
 
-// Typing the mock to match your controller
+
 jest.mock('../Controller/eventController', () => ({
   createEvent: jest.fn((req, res) => res.sendStatus(201)),
   getAllEvents: jest.fn((req, res) => res.sendStatus(200)),
