@@ -1,0 +1,76 @@
+{
+    "navbar": {
+      "home": "Koti",
+      "about": "Tietoa Meistä",
+      "contact": "Ota Yhteyttä",
+      "login": "Kirjaudu Sisään",
+      "register": "Rekisteröidy"
+    },
+    "mainHome": {
+        "caption": "LOPUTON POTENTIAALI",
+        "mainButton": "TUTKI"
+    },
+    "aboutUs": {
+      "header": "Kattava työpöytä käytössäsi",
+      "caption": "Pidä tapahtumasi, tavoitteesi ja päivittäinen rutiinisi hallinnassa",
+      "services": {
+        "first": "Kaikki Tarvitsemasi Yhdessä Paikassa",
+        "second": "Koe Luonto Parhaimmillaan",
+        "third": "Saa Yleiskatsaus Kaikista luontoaiheisista tapahtumista",
+        "forth": "Tee Yhteistyötä Missä Tahansa Tiimissä, Missä Tahansa Tapahtumassa"
+      },
+      "descriptions": {
+        "first": "Tapahtumienhallinta pitää huolen kaikista harrastuksistasi ja vapaa-ajastasi",
+        "second": "Tee yhteistyötä tiimin kanssa, pidä hauskaa ja kommunikoi tehokkaasti muiden kanssa",
+        "third": "Pidä kaikki yhdessä paikassa. Aseta lyhyen tai pitkän aikavälin tavoitteita ja lisää tuottavuutta luokittelemalla tapahtumat ja asettamalla määräaikoja.",
+        "forth": "Ei ole väliä, oletko aloittelija leirinnässä tai vaelluksessa; Tapahtumienhallinta on ihanteellinen työkalu sinulle kaikenkokoisille."
+      }
+    },
+    "contactUs": {
+      "header": "Ollaan yhteydessä",
+      "addressHeader": "Vieraile meillä:",
+      "formHeader": "Kuinka Voimme Auttaa?",
+      "namePH": "Nimesi",
+      "emailPH": "Sähköpostisi",
+      "subjectPH": "Aihe",
+      "messagePH": "Kirjoita viestisi",
+      "button": "Lähetä Viesti"
+    },
+    "login": {
+      "login": "Kirjaudu Sisään",
+      "username": "Käyttäjänimi",
+      "password": "Salasana",
+      "button": "Kirjaudu Sisään",
+      "registerLinkHeader": "Eikö sinulla ole tiliä?",
+      "register": "Rekisteröidy",
+      "forgotPassword": "Unohditko Salasanan?"
+    },
+    "register": {
+      "register": "Rekisteröidy",
+      "username": "Käyttäjänimi",
+      "password": "Salasana",
+      "confirmPassword": "Vahvista Salasana",
+      "firstName": "Etunimi",
+      "lastName": "Sukunimi",  
+      "button": "Rekisteröidy"
+    },
+    "eventApp": {
+      "search": "Hae",
+      "dashboard": "Kojelauta",
+      "newEvent": "Uusi Tapahtuma",
+      "account": "Tili",
+      "logout": "Kirjaudu Ulos",
+      "join": "Liity",
+      "joined": "Liittynyt",
+      "createYourEvent": "Luo Tapahtumasi",
+      "title": "Tapahtuman Otsikko",
+      "description": "Tapahtuman Kuvaus",
+      "organizer": "Järjestäjä",
+      "Location": "Sijainti",
+      "date": "Päivämäärä",
+      "time": "Aika",
+      "imageUrl": "Kuvan Url",
+      "submit": "Lähetä",
+      "cancel": "Peruuta"
+    }
+}

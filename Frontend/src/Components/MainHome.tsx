@@ -1,17 +1,29 @@
 // import React from 'react'
 import { Link } from 'react-router-dom'
 import '../Styles/App.css'
+import { FormattedMessage } from 'react-intl'
+interface Props {
+  messages: Record<string, any>
+}
 
-const MainHome = () => {
+const MainHome: React.FC<Props> = ({ messages }) => {
   return (
     <>
       <div className="container" id="Home">
         <div className="home_head">
           <h1 className="home_head_title">E A R T H</h1>
-          <p className="home_head_caption">ENDLESS POTENTIAL</p>
+          <p className="home_head_caption">
+            <FormattedMessage
+              id={messages.mainHome.caption}
+              defaultMessage={messages.mainHome.caption}
+            />
+          </p>
           <button className="btn btn-home">
             <Link to={'/Login'} className="link-style explore_btn">
-              EXPLORE
+              <FormattedMessage
+                id={messages.mainHome.mainButton}
+                defaultMessage={messages.mainHome.mainButton}
+              />
             </Link>
           </button>
         </div>

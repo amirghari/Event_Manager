@@ -1,0 +1,76 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "login": "Login",
+      "register": "Register"
+    },
+    "mainHome": {
+        "caption": "ENDLESS POTENTIAL",
+        "mainButton": "EXPLORE"
+    },
+    "aboutUs": {
+      "header": "A complete desk at your disposal",
+      "caption": "Stay on top of your events, goals and daily routine",
+      "services": {
+        "first": "Everything You Need In One Place",
+        "second": "Experience Nature At Its Best",
+        "third": "Get An Overview Of All nature focused events",
+        "forth": "Work With Any Team, In Any Event"
+      },
+      "descriptions": {
+        "first": "Event Manager takes care of all your hobbies and leisure time",
+        "second": "Collaborate with the team, have fun and communicate effectively with others",
+        "third": "Keep everything in one place. Set short-term or long-term goals and increase productivity by categorizing events and setting deadlines.",
+        "forth": "It does not matter if you are a beginner in camping or hiking; Event Manager is an ideal tool for you of all sizes."
+      }
+    },
+    "contactUs": {
+      "header": "Let's be in touch",
+      "addressHeader": "Visit us at:",
+      "formHeader": "How Can We Help You?",
+      "namePH": "Your Name",
+      "emailPH": "Your Email",
+      "subjectPH": "Subject",
+      "messagePH": "Enter Your Message",
+      "button": "Send Message"
+    },
+    "login": {
+      "login": "Login",
+      "username": "Username",
+      "password": "Password",
+      "button": "Login",
+      "registerLinkHeader": "Don't have an account?",
+      "register": "Register",
+      "forgotPassword": "Forgot Password?"
+    },
+    "register": {
+      "register": "Sign Up",
+      "username": "Username",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "firstName": "First Name",
+      "lastName": "Last Name",  
+      "button": "Sign Up"
+    },
+    "eventApp": {
+      "search": "Search",
+      "dashboard": "Dashboard",
+      "newEvent": "New Event",
+      "account": "Account",
+      "logout": "Logout",
+      "join": "Join",
+      "joined": "Joined",
+      "createYourEvent": "Create Your Event",
+      "title": "Event Title",
+      "description": "Event Description",
+      "organizer": "Organizer",
+      "Location": "Location",
+      "date": "Date",
+      "time": "Time",
+      "imageUrl": "Image Url",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    }
+  }

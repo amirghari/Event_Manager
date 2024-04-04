@@ -2,16 +2,28 @@
 import { ImPencil } from 'react-icons/im'
 import { AiOutlineAreaChart } from 'react-icons/ai'
 import { TbPuzzle2, TbTargetArrow } from 'react-icons/tb'
+import { FormattedMessage } from 'react-intl'
 
-const AboutUs = () => {
+interface Props {
+  messages: Record<string, any>
+}
+const AboutUs: React.FC<Props> = ({ messages }) => {
   return (
     <>
       <div className="AboutUs" id="AboutUs">
         <div className="container">
           <div className="AboutUs_content">
-            <h1 className="AboutUs_header">A complete desk at your disposal</h1>
+            <h1 className="AboutUs_header">
+              <FormattedMessage
+                id={messages.aboutUs.header}
+                defaultMessage={messages.aboutUs.header}
+              />
+            </h1>
             <p className="AboutUs_caption">
-              Stay on top of your events, goals and daily routine
+              <FormattedMessage
+                id={messages.aboutUs.caption}
+                defaultMessage={messages.aboutUs.caption}
+              />
             </p>
           </div>
           <div className="AboutUs_services">
@@ -23,10 +35,16 @@ const AboutUs = () => {
               </div>
               <div className="AboutUs_service_item_content">
                 <h4 className="AboutUs_service_item_header">
-                  Everything You Need In One Place
+                  <FormattedMessage
+                    id={messages.aboutUs.services.first}
+                    defaultMessage={messages.aboutUs.services.first}
+                  />
                 </h4>
                 <p className="AboutUs_service_item_caption">
-                  Event Manager takes care of all your hobbies and leisure time.
+                  <FormattedMessage
+                    id={messages.aboutUs.descriptions.first}
+                    defaultMessage={messages.aboutUs.descriptions.first}
+                  />
                 </p>
               </div>
             </div>
@@ -38,11 +56,16 @@ const AboutUs = () => {
               </div>
               <div className="AboutUs_service_item_content">
                 <h4 className="AboutUs_service_item_header">
-                  Experience Nature At Its Best
+                  <FormattedMessage
+                    id={messages.aboutUs.services.second}
+                    defaultMessage={messages.aboutUs.services.second}
+                  />
                 </h4>
                 <p className="AboutUs_service_item_caption">
-                  Collaborate with the team, have fun and communicate
-                  effectively with others.
+                  <FormattedMessage
+                    id={messages.aboutUs.descriptions.second}
+                    defaultMessage={messages.aboutUs.descriptions.second}
+                  />
                 </p>
               </div>
             </div>
@@ -54,12 +77,16 @@ const AboutUs = () => {
               </div>
               <div className="AboutUs_service_item_content">
                 <h4 className="AboutUs_service_item_header">
-                  Get An Overview Of All nature focused events
+                  <FormattedMessage
+                    id={messages.aboutUs.services.third}
+                    defaultMessage={messages.aboutUs.services.third}
+                  />
                 </h4>
                 <p className="AboutUs_service_item_caption">
-                  Keep everything in one place. Set short-term or long-term
-                  goals and increase productivity by categorizing events and
-                  setting deadlines.
+                  <FormattedMessage
+                    id={messages.aboutUs.descriptions.third}
+                    defaultMessage={messages.aboutUs.descriptions.third}
+                  />
                 </p>
               </div>
             </div>
@@ -71,11 +98,16 @@ const AboutUs = () => {
               </div>
               <div className="AboutUs_service_item_content">
                 <h4 className="AboutUs_service_item_header">
-                  Work With Any Team, In Any Event
+                  <FormattedMessage
+                    id={messages.aboutUs.services.forth}
+                    defaultMessage={messages.aboutUs.services.forth}
+                  />
                 </h4>
                 <p className="AboutUs_service_item_caption">
-                  It does not matter if you are a beginner in camping or hiking;
-                  Event Manager is an ideal tool for you of all sizes.
+                  <FormattedMessage
+                    id={messages.aboutUs.descriptions.forth}
+                    defaultMessage={messages.aboutUs.descriptions.forth}
+                  />
                 </p>
               </div>
             </div>
