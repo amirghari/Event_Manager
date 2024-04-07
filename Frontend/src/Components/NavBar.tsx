@@ -5,6 +5,7 @@ import '../Styles/App.css'
 import { FaEarthAmericas } from 'react-icons/fa6'
 import { FormattedMessage } from 'react-intl'
 import { TbLanguage } from 'react-icons/tb'
+import { useNavigate } from 'react-router-dom'
 import {
   IconButton,
   Menu,
@@ -20,6 +21,18 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = ({ messages, locale, setLocale }) => {
+  const navigate = useNavigate()
+
+  const reloadHandler = () => {
+    navigate('/Login', { replace: true })
+    window.location.reload()
+    console.log('reloaded')
+  }
+  const regReloadHandler = () => {
+    navigate('/Register', { replace: true })
+    window.location.reload()
+    console.log('reloaded')
+  }
   const handleLocaleChange = (newLocale: 'en' | 'fi' | 'fa') => {
     setLocale(newLocale)
   }
@@ -126,7 +139,7 @@ const Navbar: React.FC<Props> = ({ messages, locale, setLocale }) => {
         </div>
         <div className="btn-nav">
           <button className="btn btn-sign-in">
-            <Link to="/Login" className="link-style">
+            <Link to="/Login" className="link-style" onClick={reloadHandler}>
               <FormattedMessage
                 id={messages.navbar.login}
                 defaultMessage={messages.navbar.login}
@@ -134,7 +147,11 @@ const Navbar: React.FC<Props> = ({ messages, locale, setLocale }) => {
             </Link>
           </button>
           <button className="btn reg_btn">
-            <Link to="/Register" className="link-style">
+            <Link
+              to="/Register"
+              className="link-style"
+              onClick={regReloadHandler}
+            >
               <FormattedMessage
                 id={messages.navbar.register}
                 defaultMessage={messages.navbar.register}
@@ -157,6 +174,9 @@ const Navbar: React.FC<Props> = ({ messages, locale, setLocale }) => {
               </MenuItem>
               <MenuItem onClick={() => handleLocaleChange('fi')} fontSize={20}>
                 Finnish
+              </MenuItem>
+              <MenuItem onClick={() => handleLocaleChange('fa')} fontSize={20}>
+                Persian
               </MenuItem>
             </MenuList>
           </Menu>

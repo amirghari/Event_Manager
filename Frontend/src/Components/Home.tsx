@@ -5,6 +5,7 @@ import ContactUs from './ContactUs'
 import Footer from './Footer'
 import enMessages from '../locals/en.json'
 import fiMessages from '../locals/fi.json'
+import faMessages from '../locals/fa.json'
 import { IntlProvider } from 'react-intl'
 import { useEffect, useState } from 'react'
 
@@ -16,29 +17,30 @@ const Home = () => {
   const messages: Record<string, any> = {
     en: enMessages,
     fi: fiMessages,
-    // fi: fiMessages,
-    // fa: faMessages,
+    fa: faMessages,
   }
   useEffect(() => {
     localStorage.setItem('locale', locale)
   }, [locale])
   return (
     <>
-      <IntlProvider
-        locale={locale}
-        messages={messages[locale]}
-        onError={() => {}}
-      >
-        <Navbar
-          messages={messages[locale]}
+      <div className={`${locale === 'fa' ? 'rtl' : ''}`}>
+        <IntlProvider
           locale={locale}
-          setLocale={setLocale}
-        />
-        <MainHome messages={messages[locale]} />
-        <AboutUs messages={messages[locale]} />
-        <ContactUs messages={messages[locale]} />
-        <Footer />
-      </IntlProvider>
+          messages={messages[locale]}
+          onError={() => {}}
+        >
+          <Navbar
+            messages={messages[locale]}
+            locale={locale}
+            setLocale={setLocale}
+          />
+          <MainHome messages={messages[locale]} />
+          <AboutUs messages={messages[locale]} />
+          <ContactUs messages={messages[locale]} />
+          <Footer />
+        </IntlProvider>
+      </div>
     </>
   )
 }

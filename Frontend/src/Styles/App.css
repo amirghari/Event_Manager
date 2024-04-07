@@ -53,6 +53,10 @@ body {
   box-sizing: inherit;
 }
 
+.rtl {
+  direction: rtl;
+}
+
 /* Container */
 
 .container {
@@ -99,7 +103,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 10rem;
+  margin-inline-start: 10rem;
 }
 
 .nav-menu-parent {
@@ -110,8 +114,8 @@ body {
 }
 .nav-menu-items {
   list-style: none;
-  padding-left: 0;
-  margin-left: 4rem;
+  padding-inline-start: 0;
+  margin-inline-start: 4rem;
   font-size: 1.4rem;
   align-items: center;
   text-align: center;

@@ -11,6 +11,7 @@ import { UserProvider } from './Services/UserContext'
 import { useEffect, useState } from 'react'
 import enMessages from './locals/en.json'
 import fiMessages from './locals/fi.json'
+import faMessages from './locals/fa.json'
 import { IntlProvider } from 'react-intl'
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   const messages: Record<string, any> = {
     en: enMessages,
     fi: fiMessages,
-    // fa: faMessages,
+    fa: faMessages,
   }
   const [userId, setUserId] = useState('')
 
@@ -34,24 +35,32 @@ function App() {
   }, [locale])
   return (
     <>
-      <IntlProvider
-        locale={locale}
-        messages={messages[locale]}
-        onError={() => {}}
-      >
-        <UserProvider userId={userId}>
-          <BrowserRouter basename="/">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/Register" element={<Register />} />
-              <Route path="/EventApp" element={<EventApp />} />
-              <Route path="/EventApp/Dashboard" element={<Dashboard />} />
-              <Route path="/EventApp/EventAccount" element={<EventAccount />} />
-            </Routes>
-          </BrowserRouter>
-        </UserProvider>
-      </IntlProvider>
+      <div className={`${locale === 'fa' ? 'rtl' : ''}`}>
+        <IntlProvider
+          locale={locale}
+          messages={messages[locale]}
+          onError={() => {}}
+        >
+          <UserProvider userId={userId}>
+            <BrowserRouter basename="/">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="/Login"
+                  element={<Login messages={messages[locale]} />}
+                />
+                <Route path="/Register" element={<Register />} />
+                <Route path="/EventApp" element={<EventApp />} />
+                <Route path="/EventApp/Dashboard" element={<Dashboard />} />
+                <Route
+                  path="/EventApp/EventAccount"
+                  element={<EventAccount />}
+                />
+              </Routes>
+            </BrowserRouter>
+          </UserProvider>
+        </IntlProvider>
+      </div>
     </>
   )
 }
