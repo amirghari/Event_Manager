@@ -4,8 +4,20 @@ import AsideBar from './AsideBar'
 import { useUserEvents } from '../../Hooks/userHook'
 import { useEffect, useState } from 'react'
 import EventCard from './EventCards'
+import enMessages from '../../locals/en.json'
+import fiMessages from '../../locals/fi.json'
+import faMessages from '../../locals/fa.json'
 
 const Dashboard = () => {
+  const [locale, setLocale] = useState<'en' | 'fi' | 'fa'>(() => {
+    const storedLocale = localStorage.getItem('locale')
+    return storedLocale ? (storedLocale as 'en' | 'fi' | 'fa') : 'en'
+  })
+  const messages: Record<string, any> = {
+    en: enMessages,
+    fi: fiMessages,
+    fa: faMessages,
+  }
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
@@ -25,11 +37,11 @@ const Dashboard = () => {
       }}
     >
       <GridItem gridArea="nav">
-        <NavApp />
+        <NavApp messages={messages[locale]} />
       </GridItem>
       <Show above="lg">
         <GridItem gridArea="aside">
-          <AsideBar />
+          <AsideBar messages={messages[locale]} />
         </GridItem>
       </Show>
       <GridItem gridArea="main">
@@ -40,7 +52,11 @@ const Dashboard = () => {
         >
           {joinedEvents ? (
             joinedEvents.map((event) => (
-              <EventCard key={event.Id} event={event} />
+              <EventCard
+                key={event.Id}
+                event={event}
+                messages={messages[locale]}
+              />
             ))
           ) : (
             <li>No games available.</li>

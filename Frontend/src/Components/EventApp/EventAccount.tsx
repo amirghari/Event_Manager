@@ -1,10 +1,22 @@
 import { Grid, GridItem, Show, SimpleGrid } from '@chakra-ui/react'
 import NavApp from './NavApp'
 import AsideBar from './AsideBar'
-
+import enMessages from '../../locals/en.json'
+import fiMessages from '../../locals/fi.json'
+import faMessages from '../../locals/fa.json'
 import { useEvents } from '../../Hooks/useEvents'
+import { useState } from 'react'
 
 const EventAccount = () => {
+  const [locale, setLocale] = useState<'en' | 'fi' | 'fa'>(() => {
+    const storedLocale = localStorage.getItem('locale')
+    return storedLocale ? (storedLocale as 'en' | 'fi' | 'fa') : 'en'
+  })
+  const messages: Record<string, any> = {
+    en: enMessages,
+    fi: fiMessages,
+    fa: faMessages,
+  }
   useEvents()
   return (
     <Grid
@@ -18,11 +30,11 @@ const EventAccount = () => {
       }}
     >
       <GridItem gridArea="nav">
-        <NavApp />
+        <NavApp messages={messages[locale]} />
       </GridItem>
       <Show above="lg">
         <GridItem gridArea="aside">
-          <AsideBar />
+          <AsideBar messages={messages[locale]} />
         </GridItem>
       </Show>
       <GridItem gridArea="main">
