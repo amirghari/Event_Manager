@@ -47,6 +47,7 @@
     },
     "register": {
       "register": "Rekisteröidy",
+      "email": "Sähköposti",
       "username": "Käyttäjänimi",
       "password": "Salasana",
       "confirmPassword": "Vahvista Salasana",
@@ -55,6 +56,7 @@
       "button": "Rekisteröidy"
     },
     "eventApp": {
+      "logout": "Kirjaudu Ulos",
       "search": "Hae",
       "dashboard": "Kojelauta",
       "newEvent": "Uusi Tapahtuma",

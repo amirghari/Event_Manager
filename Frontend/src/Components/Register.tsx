@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { ReactSVG } from 'react-svg'
 import '../Styles/Register.css'
 import { createUser } from '../Hooks/userHook'
+import { FormattedMessage } from 'react-intl'
+
+interface Props {
+  messages: Record<string, any>
+}
 
 interface SignupField {
   id: number
@@ -12,7 +17,7 @@ interface SignupField {
   func: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const Register: React.FC = () => {
+const Register: React.FC<Props> = ({ messages }) => {
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -27,28 +32,28 @@ const Register: React.FC = () => {
       id: 0,
       type: 'text',
       value: username,
-      placeholder: 'Username',
+      placeholder: messages.register.username,
       func: (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value),
     },
     {
       id: 1,
       type: 'email',
       value: email,
-      placeholder: 'Email',
+      placeholder: messages.register.email,
       func: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
     },
     {
       id: 2,
       type: 'password',
       value: password,
-      placeholder: 'Password',
+      placeholder: messages.register.password,
       func: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
     },
     {
       id: 3,
       type: 'password',
       value: confirmPassword,
-      placeholder: 'Confirm Password',
+      placeholder: messages.register.confirmPassword,
       func: (e: ChangeEvent<HTMLInputElement>) =>
         setConfirmPassword(e.target.value),
     },
@@ -56,14 +61,14 @@ const Register: React.FC = () => {
       id: 4,
       type: 'text',
       value: firstname,
-      placeholder: 'First Name',
+      placeholder: messages.register.firstName,
       func: (e: ChangeEvent<HTMLInputElement>) => setFirstname(e.target.value),
     },
     {
       id: 5,
       type: 'text',
       value: lastname,
-      placeholder: 'Last Name',
+      placeholder: messages.register.lastName,
       func: (e: ChangeEvent<HTMLInputElement>) => setLastname(e.target.value),
     },
   ]
@@ -109,7 +114,12 @@ const Register: React.FC = () => {
 
       <div className="register-container">
         <form className="register-form" onSubmit={handleSubmit}>
-          <h1>Sign Up</h1>
+          <h1>
+            <FormattedMessage
+              id={messages.register.register}
+              defaultMessage={messages.register.register}
+            />
+          </h1>
           {signupCriteria.map((c) => (
             <input
               key={c.id}
@@ -119,7 +129,12 @@ const Register: React.FC = () => {
               onChange={c.func}
             />
           ))}
-          <button>Sign Up</button>
+          <button>
+            <FormattedMessage
+              id={messages.register.register}
+              defaultMessage={messages.register.register}
+            />
+          </button>
         </form>
       </div>
     </>

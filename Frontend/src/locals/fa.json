@@ -47,6 +47,7 @@
     },
     "register": {
       "register": "ثبت نام کنید",
+      "email": "ایمیل",
       "username": "نام کاربری",
       "password": "رمز عبور",
       "confirmPassword": "تایید رمز عبور",
@@ -55,6 +56,7 @@
       "button": "ثبت نام"
     },
     "eventApp": {
+        "logout": "خروج",
         "search": "جستجو",
         "dashboard": "داشبورد",
         "newEvent": "رویداد جدید",

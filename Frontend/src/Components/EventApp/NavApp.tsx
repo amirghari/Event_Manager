@@ -11,8 +11,25 @@ import {
 import { Link } from 'react-router-dom'
 import { FaEarthAmericas } from 'react-icons/fa6'
 import DrawerMenu from './DrawerMenu'
+import { FormattedMessage } from 'react-intl'
+import enMessages from '../../locals/en.json'
+import fiMessages from '../../locals/fi.json'
+import faMessages from '../../locals/fa.json'
 
-const NavApp = () => {
+interface Props {
+  messages: Record<string, any>
+}
+
+const NavApp: React.FC<Props> = ({ messages }) => {
+  const [locale, setLocale] = useState<'en' | 'fi' | 'fa'>(() => {
+    const storedLocale = localStorage.getItem('locale')
+    return storedLocale ? (storedLocale as 'en' | 'fi' | 'fa') : 'en'
+  })
+  const messages: Record<string, any> = {
+    en: enMessages,
+    fi: fiMessages,
+    fa: faMessages,
+  }
   return (
     <Flex alignItems={'center'} p={'10px'} px={'100px'}>
       <HStack spacing={4}>
@@ -20,7 +37,7 @@ const NavApp = () => {
           <FaEarthAmericas className="logo-icon" size={50} />
         </Show>
         <Show below="959px">
-          <DrawerMenu />
+          <DrawerMenu messages={messages[locale]} />
         </Show>
         <Text
           marginTop="30px"
@@ -44,7 +61,12 @@ const NavApp = () => {
           borderRadius={0}
           _hover={{ bg: 'red.200' }}
         >
-          <Link to={'../'}>Log out</Link>
+          <Link to={'../'}>
+            <FormattedMessage
+              id={messages.eventApp.logout}
+              defaultMessage={messages.eventApp.logout}
+            />
+          </Link>
         </Button>
       </HStack>
     </Flex>

@@ -33,6 +33,10 @@ import { useState } from 'react'
 import { EventParams } from './AsideBar'
 import React from 'react'
 
+interface Props {
+  messages: Record<string, any>
+}
+
 function DrawerMenu() {
   let id = 20
   const {

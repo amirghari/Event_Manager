@@ -12,12 +12,17 @@ import { useEffect, useState } from 'react'
 import { MdLocationOn, MdDateRange } from 'react-icons/md'
 import { joinEvent, checkEventJoined } from '../../Hooks/userHook'
 import { FaRegClock } from 'react-icons/fa'
+import { FormattedMessage } from 'react-intl'
+
 interface EventCardProps {
   event: Events
   userId: string
 }
+interface Props {
+  messages: Record<string, any>
+}
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+const EventCard: React.FC<EventCardProps> = ({ event, messages }) => {
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
@@ -82,7 +87,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
               variant="outline"
               size="sm"
             >
-              {joinButton ? 'Joined' : 'Join'}
+              {joinButton ? messages.eventApp.join : messages.eventApp.joined}
             </Button>
             <HStack marginLeft={'65px'}>
               <FaRegClock color="#74A848" />

@@ -34,8 +34,18 @@ export interface EventParams {
   Time: string
   Image: string
 }
+import { FormattedMessage } from 'react-intl'
+import { Form } from 'react-router-dom'
 
-const AsideBar = () => {
+interface Props {
+  messages: Record<string, any>
+}
+
+const AsideBar: React.FC<Props> = ({ messages }) => {
+  const [locale, setLocale] = useState<'en' | 'fi' | 'fa'>(() => {
+    const storedLocale = localStorage.getItem('locale')
+    return storedLocale ? (storedLocale as 'en' | 'fi' | 'fa') : 'en'
+  })
   let id = 20
   let id2 = ++id
   id = id2
@@ -90,7 +100,10 @@ const AsideBar = () => {
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
             href="/EventApp"
           >
-            Search
+            <FormattedMessage
+              id={messages.eventApp.search}
+              defaultMessage={messages.eventApp.search}
+            />
           </Link>
         </HStack>
       </ListItem>
@@ -102,7 +115,10 @@ const AsideBar = () => {
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
             href="/EventApp/Dashboard"
           >
-            Dashboard
+            <FormattedMessage
+              id={messages.eventApp.dashboard}
+              defaultMessage={messages.eventApp.dashboard}
+            />
           </Link>
         </HStack>
       </ListItem>
@@ -114,87 +130,144 @@ const AsideBar = () => {
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
             onClick={onOpen}
           >
-            New Event
+            <FormattedMessage
+              id={messages.eventApp.newEvent}
+              defaultMessage={messages.eventApp.newEvent}
+            />
           </Link>
-          <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Create your Event</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody pb={6}>
-                <FormControl>
-                  <FormLabel>Event Title</FormLabel>
-                  <Input
-                    name="Title"
-                    placeholder="Event Title"
-                    onChange={handleChange}
+          <div className={`${locale === 'fa' ? 'rtl' : ''}`}>
+            <Modal
+              initialFocusRef={initialRef}
+              isOpen={isOpen}
+              onClose={onClose}
+            >
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>
+                  <FormattedMessage
+                    id={messages.eventApp.createYourEvent}
+                    defaultMessage={messages.eventApp.createYourEvent}
                   />
-                </FormControl>
+                </ModalHeader>
+                <ModalCloseButton />
+                <ModalBody pb={6}>
+                  <FormControl>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.title}
+                        defaultMessage={messages.eventApp.title}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Title"
+                      placeholder={messages.eventApp.title}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Description</FormLabel>
-                  <Input
-                    name="Description"
-                    placeholder="Description"
-                    onChange={handleChange}
-                  />
-                </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.description}
+                        defaultMessage={messages.eventApp.description}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Description"
+                      placeholder={messages.eventApp.description}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Organizer</FormLabel>
-                  <Input
-                    name="Organizer"
-                    placeholder="Organizer"
-                    onChange={handleChange}
-                  />
-                </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.organizer}
+                        defaultMessage={messages.eventApp.organizer}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Organizer"
+                      placeholder={messages.eventApp.organizer}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Location</FormLabel>
-                  <Input
-                    name="Location"
-                    placeholder="Location"
-                    onChange={handleChange}
-                  />
-                </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.location}
+                        defaultMessage={messages.eventApp.location}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Location"
+                      placeholder={messages.eventApp.location}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Date</FormLabel>
-                  <Input
-                    name="Date"
-                    type="date"
-                    placeholder="Select the Date"
-                    onChange={handleChange}
-                  />
-                </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.date}
+                        defaultMessage={messages.eventApp.date}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Date"
+                      type="date"
+                      placeholder={messages.eventApp.date}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Time</FormLabel>
-                  <Input
-                    name="Time"
-                    type="time"
-                    placeholder="Select the Time"
-                    onChange={handleChange}
-                  />
-                </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.time}
+                        defaultMessage={messages.eventApp.time}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Time"
+                      type="time"
+                      placeholder={messages.eventApp.time}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Image Url</FormLabel>
-                  <Input
-                    name="Image"
-                    placeholder="Image Url"
-                    onChange={handleChange}
-                  />
-                </FormControl>
-              </ModalBody>
-              <ModalFooter>
-                <Button colorScheme="green" mr={3} onClick={handleSubmit}>
-                  Submit
-                </Button>
-                <Button onClick={onClose}>Cancel</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+                  <FormControl mt={4}>
+                    <FormLabel>
+                      <FormattedMessage
+                        id={messages.eventApp.imageUrl}
+                        defaultMessage={messages.eventApp.imageUrl}
+                      />
+                    </FormLabel>
+                    <Input
+                      name="Image"
+                      placeholder={messages.eventApp.imageUrl}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </ModalBody>
+                <ModalFooter>
+                  <Button colorScheme="green" mr={3} onClick={handleSubmit}>
+                    <FormattedMessage
+                      id={messages.eventApp.submit}
+                      defaultMessage={messages.eventApp.submit}
+                    />
+                  </Button>
+                  <Button onClick={onClose}>
+                    <FormattedMessage
+                      id={messages.eventApp.cancel}
+                      defaultMessage={messages.eventApp.cancel}
+                    />
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </div>
         </HStack>
       </ListItem>
 
@@ -206,7 +279,10 @@ const AsideBar = () => {
             fontSize={{ base: 'sm', md: 'md', lg: 'x-large' }}
             href="/EventApp/EventAccount"
           >
-            Account
+            <FormattedMessage
+              id={messages.eventApp.account}
+              defaultMessage={messages.eventApp.account}
+            />
           </Link>
         </HStack>
       </ListItem>

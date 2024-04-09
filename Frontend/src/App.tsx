@@ -49,7 +49,10 @@ function App() {
                   path="/Login"
                   element={<Login messages={messages[locale]} />}
                 />
-                <Route path="/Register" element={<Register />} />
+                <Route
+                  path="/Register"
+                  element={<Register messages={messages[locale]} />}
+                />
                 <Route path="/EventApp" element={<EventApp />} />
                 <Route path="/EventApp/Dashboard" element={<Dashboard />} />
                 <Route
