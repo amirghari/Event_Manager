@@ -18,12 +18,13 @@ interface SignupField {
 }
 
 const Register: React.FC<Props> = ({ messages }) => {
+  const [firstname, setFirstname] = useState<string>('')
+  const [lastname, setLastname] = useState<string>('')
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
-  const [firstname, setFirstname] = useState<string>('')
-  const [lastname, setLastname] = useState<string>('')
+
 
   const navigate = useNavigate()
 
@@ -31,46 +32,47 @@ const Register: React.FC<Props> = ({ messages }) => {
     {
       id: 0,
       type: 'text',
+      value: firstname,
+      placeholder: messages.register.firstName,
+      func: (e: ChangeEvent<HTMLInputElement>) => setFirstname(e.target.value),
+    },
+    {
+      id: 1,
+      type: 'text',
+      value: lastname,
+      placeholder: messages.register.lastName,
+      func: (e: ChangeEvent<HTMLInputElement>) => setLastname(e.target.value),
+    },
+    {
+      id: 2,
+      type: 'text',
       value: username,
       placeholder: messages.register.username,
       func: (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value),
     },
     {
-      id: 1,
+      id: 3,
       type: 'email',
       value: email,
       placeholder: messages.register.email,
       func: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
     },
     {
-      id: 2,
+      id: 4,
       type: 'password',
       value: password,
       placeholder: messages.register.password,
       func: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
     },
     {
-      id: 3,
+      id: 5,
       type: 'password',
       value: confirmPassword,
       placeholder: messages.register.confirmPassword,
       func: (e: ChangeEvent<HTMLInputElement>) =>
         setConfirmPassword(e.target.value),
     },
-    {
-      id: 4,
-      type: 'text',
-      value: firstname,
-      placeholder: messages.register.firstName,
-      func: (e: ChangeEvent<HTMLInputElement>) => setFirstname(e.target.value),
-    },
-    {
-      id: 5,
-      type: 'text',
-      value: lastname,
-      placeholder: messages.register.lastName,
-      func: (e: ChangeEvent<HTMLInputElement>) => setLastname(e.target.value),
-    },
+
   ]
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
