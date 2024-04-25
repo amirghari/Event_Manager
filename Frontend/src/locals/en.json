@@ -68,10 +68,10 @@
       "title": "Event Title",
       "description": "Event Description",
       "organizer": "Organizer",
-      "Location": "Location",
+      "location": "Location",
       "date": "Date",
       "time": "Time",
-      "imageUrl": "Image Url",
+      "image": "Image Url",
       "submit": "Submit",
       "cancel": "Cancel"
     }

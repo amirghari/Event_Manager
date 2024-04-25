@@ -68,10 +68,10 @@
       "title": "Tapahtuman Otsikko",
       "description": "Tapahtuman Kuvaus",
       "organizer": "Järjestäjä",
-      "Location": "Sijainti",
+      "location": "Sijainti",
       "date": "Päivämäärä",
       "time": "Aika",
-      "imageUrl": "Kuvan Url",
+      "image": "Kuvan Url",
       "submit": "Lähetä",
       "cancel": "Peruuta"
     }
