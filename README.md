@@ -52,5 +52,3 @@ Our project leverages automated testing and CI/CD practices:
 ![Jenkins Pipeline](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/Jenkins_Pipline_.png)
 ![Jenkins Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/JenkinsBackendTest.png)
 ![Jest Backend Testing](https://github.com/amirghari/Event_Manager/blob/main/Backend/test-reports/Backend%20Testing.png)
-![Docker Image Creation](https://github.com/amirghari/Event_Manager/blob/main/Jenkins%20Tests/eventmanager_dockerhub.png)
-
